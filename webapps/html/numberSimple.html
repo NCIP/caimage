@@ -1,0 +1,34 @@
+ <!--- <tr> 
+          <td bgcolor="F7F7CD" width="100%" height="16" class="pCellbder" colspan="2"> 
+            <div align="right"><span class="bodytext">Page 1 Show 1 - 5 of 361 
+              | <a href="#">First</a> | | <a href="#">Next</a> | <a href="#">Last</a> 
+              </span>| </div>
+          </td>
+        </tr> --->
+        
+
+
+<tr align= right  bgcolor="#f6f6f6"  NOWRAP  >
+			<td valign = top bgcolor="F7F7CD" width="100%" height="16" class="pCellbder" colspan = 3>
+				<div align="right"><span class="bodytext">
+	Page <%=(q+5)/5%> Show <%=q+1%> - <%=q+5-a%> of <%=annotv.size()%>
+				</span>&nbsp;|&nbsp;
+				<span class="bodytext">
+				<a href="simpleresults.jsp?q=0&species=<%=species%>&organTissueCode=<%=organ%>&organTissueName=<%=URLEncoder.encode(tname)%>&DiagnosisCode=<%=dignosis%>&DiagnosisName=<%=URLEncoder.encode(dignosisName)%>">First</a>
+				</span>&nbsp;|&nbsp;
+				<span class="bodytext">
+				<%if(q!=0){ %>
+				<a href="simpleresults.jsp?q=<%=q-5%>&species=<%=species%>&organTissueCode=<%=organ%>&organTissueName=<%=URLEncoder.encode(tname)%>&DiagnosisCode=<%=dignosis%>&DiagnosisName=<%=URLEncoder.encode(dignosisName)%>">Previous</a>
+				<%}%>
+				</span>&nbsp;|&nbsp;
+				<span class="bodytext">
+				<%if(q+5!=(annotv.size())  && (annotv.size()-q > 10 ) ){ %>
+				<a href="simpleresults.jsp?q=<%=q+5%>&species=<%=species%>&organTissueCode=<%=organ%>&organTissueName=<%=URLEncoder.encode(tname)%>&DiagnosisCode=<%=dignosis%>&DiagnosisName=<%=URLEncoder.encode(dignosisName)%>">Next</a>
+				<%}%>
+				</span>&nbsp;|&nbsp;
+				<span class="bodytext">
+				<a href="simpleresults.jsp?q=<%=(annotv.size()/5)*5 %>&species=<%=species%>&organTissueCode=<%=organ%>&organTissueName=<%=URLEncoder.encode(tname)%>&DiagnosisCode=<%=dignosis%>&DiagnosisName=<%=URLEncoder.encode(dignosisName)%>">Last</a>
+				</span>&nbsp;|&nbsp;
+				</div>
+			</td>
+		</tr> 

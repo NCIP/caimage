@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ImageServer SYSTEM "calcrgn.dtd">
+<ImageServer host="165.112.113.105:80" path="lizardtech/iserv" xmlns:LizardTech="http://www.lizardtech.com">
+	<Request command="calcrgn">
+		<Parameter name="cat">MouseProstateNormal</Parameter>
+		<Parameter name="img">MP19.sid</Parameter>
+		<Parameter name="wid">400</Parameter>
+		<Parameter name="hei">400</Parameter>
+		<Parameter name="style">none</Parameter>
+	</Request>
+	<Response>
+		<Catalog name="MouseProstateNormal">
+			<Image rgn="0.2545315488,0.2708764912,0.7440152964,0.7280520037" name="MP19.sid" type="sid" width="26150" height="27998" parent="/" numlevels="6" colorspace="RGB"/>
+		</Catalog>
+	</Response>
+</ImageServer>
+

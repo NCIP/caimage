@@ -1,0 +1,25 @@
+<tr align="right" bgcolor="#f6f6f6" NOWRAP>
+			<td  align="right" valign="top" colspan="3" bgcolor="#F7F7CD">
+	<font class="bodytext">			
+		Page <%=(q+5)/5%> Show <%=q+1%> - <%=q+5-a%> of <%=annotv.size()%>
+				&nbsp;|&nbsp;
+				
+				<a href="Advancedresults.jsp?q=0&species=<%=species%>&organTissueCode=<%=organ%>&organTissueName=<%=URLEncoder.encode(tname)%>&DiagnosisCode=<%=dignosis%>&DiagnosisName=<%=URLEncoder.encode(dignosisName)%>&imagename=<%=URLEncoder.encode(imagename)%>&donator=<%=URLEncoder.encode(donator)%>&donator_Institution=<%=URLEncoder.encode(donator_Institution)%>&stain=<%=URLEncoder.encode(stain)%>&strain=<%=URLEncoder.encode(strain)%>&gender=<%=URLEncoder.encode(gender)%>">First</a>
+				&nbsp;|&nbsp;
+				
+				<%if(q!=0){ %>
+				<a href="Advancedresults.jsp?q=<%=q-5%>&species=<%=species%>&organTissueCode=<%=organ%>&organTissueName=<%=URLEncoder.encode(tname)%>&DiagnosisCode=<%=dignosis%>&DiagnosisName=<%=URLEncoder.encode(dignosisName)%>&imagename=<%=URLEncoder.encode(imagename)%>&donator=<%=URLEncoder.encode(donator)%>&donator_Institution=<%=URLEncoder.encode(donator_Institution)%>&stain=<%=URLEncoder.encode(stain)%>&strain=<%=URLEncoder.encode(strain)%>&gender=<%=URLEncoder.encode(gender)%>">Previous</a>
+				<%}%>
+				&nbsp;|&nbsp;
+				
+				<%if(q+5!=(annotv.size())  && (annotv.size()-q > 5 ) ){ %>
+				<a href="Advancedresults.jsp?q=<%=q+5%>&species=<%=species%>&organTissueCode=<%=organ%>&organTissueName=<%=URLEncoder.encode(tname)%>&DiagnosisCode=<%=dignosis%>&DiagnosisName=<%=URLEncoder.encode(dignosisName)%>&imagename=<%=URLEncoder.encode(imagename)%>&donator=<%=URLEncoder.encode(donator)%>&donator_Institution=<%=URLEncoder.encode(donator_Institution)%>&stain=<%=URLEncoder.encode(stain)%>&strain=<%=URLEncoder.encode(strain)%>&gender=<%=URLEncoder.encode(gender)%>">Next</a>
+				<%}%>
+				&nbsp;|&nbsp;
+				
+				<%System.out.println("the value of q mod is"+ (annotv.size()/5)*5  ); %>
+				<a href="Advancedresults.jsp?q=<%=(annotv.size()/5)*5 %>&species=<%=species%>&organTissueCode=<%=organ%>&organTissueName=<%=URLEncoder.encode(tname)%>&DiagnosisCode=<%=dignosis%>&DiagnosisName=<%=URLEncoder.encode(dignosisName)%>&imagename=<%=URLEncoder.encode(imagename)%>&donator=<%=URLEncoder.encode(donator)%>&donator_Institution=<%=URLEncoder.encode(donator_Institution)%>&stain=<%=URLEncoder.encode(stain)%>&strain=<%=URLEncoder.encode(strain)%>&gender=<%=URLEncoder.encode(gender)%>">Last</a>
+				&nbsp;|&nbsp;
+			</font>	
+			</td>
+		</tr> 

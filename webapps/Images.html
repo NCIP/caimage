@@ -1,0 +1,56 @@
+ <%response.setDateHeader("Expires",System.currentTimeMillis());%>
+<%if(userDir.indexOf(":")!= -1){ %>
+<form  method="post" enctype="multipart/form-data" action="Images2.jsp" name="Image">
+<%}
+else {%>
+<% String imageurl = imagePath1+"Images2.jsp"; %>
+<form  method="post" enctype="multipart/form-data" action=<%=imageurl%> name="Image">
+<%}%>
+<INPUT  TYPE = "HIDDEN" NAME = "id" VALUE = "<%=id%>"> 
+<INPUT  TYPE = "HIDDEN" NAME = "modelId" VALUE = "<%=modelId%>"> 
+
+<table align="center" width="95%" cellspacing="5" cellpadding="5" border="0">
+<tr><td colspan="2"><h2 class="title">Upload a Image file (Of the type  .jpg , .jpeg, .gif, .sid, or .tif):</h2></td></tr>
+<tr>
+    <td valign="top" align="left" class="label">Upload Image&nbsp;</td>
+    <td valign="top" align="left"><input type ="file" name = "myUploadObject" > 
+
+
+  <% if(imagedata.getOriginalimagename() != null){%>
+	 <br>You have entered the following image to the database:
+	<b>"<%=DatabaseSetup.removeNull(imagedata.getOriginalimagename())%>"</b>. 
+	<br>if you would like replace this image with a new one,please click on the <b>"Browse..."</b> button above.</td>
+  <%}%>
+</tr> 
+<tr>
+    <td valign="top" align="left" class="label">Image Title &nbsp;</td>
+    <td valign="top" align="left" colspan="3">
+	<input type="text" name="required_Image Title" size="40" maxlength="255" value="<%=DatabaseSetup.removeNull(imagedata.getImagetitle())%>">
+   <A target="_blank" href="help.html#2-1" onMouseOver="window.status='Enter a Title for the Image here'; return true" onMouseOut="window.status=''; return true"><IMG src="images/help.gif" width="49" height="18" hspace="10" vspace="0" border="0" alt="Enter a Title for the Image here" align="bottom"></A></td>
+</tr>
+<tr>
+    <td valign="top" align="left" >Description of Image&nbsp;</td>
+    <td valign="top" align="left" colspan="3"><textarea cols="30" rows="3" name="Image Description"><%=DatabaseSetup.removeNull(imagedata.getImagedescription())%></textarea></td>
+    <td valign="top" align="left">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" align="left" >Staining&nbsp;</td>
+    <td valign="top" align="left" colspan="3"><input type="text" name="StainType" size="40" maxlength="255" value=<%=DatabaseSetup.removeNull(imagedata.getStaintype())%>></td>
+    <td valign="top" align="left">&nbsp;</td> 
+</tr>
+<tr><td>&nbsp;&nbsp;&nbsp;</td>
+    <td valign="top" colspan="5" align="left"><input type="submit" name="submit_images" value="Save Data">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Clear">
+<%System.out.println("Checking  id :"+ id); 
+										if(id!= null && !id.equals("")){%> 
+										
+										<INPUT type ="SUBMIT" name ="delete_record" value ="Delete Data"  onClick="return confirm('Are you sure you want to delete the record?')"> 
+										<%}
+%></td>  </tr>
+										
+
+</table></form>
+
+
+</body>
+</html>
+

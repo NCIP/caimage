@@ -1,0 +1,32 @@
+.bodytext {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: x-small; font-style: normal; line-height: normal; font-weight: normal; font-variant: normal; color: #000000; word-spacing: normal; letter-spacing: normal; text-align: left; vertical-align: baseline; white-space: normal}
+.bodytxbold {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size:x-small; font-style: normal; font-weight: bold; font-variant: normal; color: #000000}
+.tophder {  background-repeat: repeat; background-image: url(images/caIMAGEtpbg.jpg)}
+.buttoncell {  background-color: #000000; background-image: url(images/button_bg.gif); border-color: #CC9933 black black}
+.tblbders {  margin-top: 10px; margin-right: 10px; margin-bottom: 0px; margin-left: 10px; border: #333366; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+.ftbders {  background-color: #CCCCCC; text-align: center; width: 100%; margin-top: 0px; margin-right: 10px; margin-bottom: 0px; margin-left: 10px; border: #333366 solid; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: xx-small; font-style: normal; font-weight: normal; color: #000000; border-width: 0px 1px 1px}
+.pCellbder {  background-color: #DFD3A4; vertical-align: middle; border: #333366; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px}
+.wCellbder {  background-color: #FFFFFF; vertical-align: middle; border: #333366; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px}
+.wCellno {  background-color: #FFFFFF; vertical-align: middle; border-style: none; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}
+.pCellno {  background-color: #DFD3A4; vertical-align: middle; border-style: none; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}
+.tblside {  background-color: #DFD3A4; vertical-align: top; border-color: #FFFFFF #333366 #FFFFFF #FFFFFF; border-style: solid; border-top-width: 0px; border-right-width: 1px; border-bottom-width: 0px; border-left-width: 0px}
+.helpCell {  background-color: #FFFFFF; background-image: url(images/helpbuttonbg.gif); background-repeat: repeat}
+.bluhders {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; font-style: normal; color: #333366; text-align: left; font-weight: 800; font-variant: normal}
+.tblSearch {  background-color: #FFFFFF; vertical-align: middle; border: #333366; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; width: 600px}
+.tblSrchRes {  border: solid; margin-top: 0px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; border-width: 0px 1px 1px; border-color: #FFFFFF #333366 #333366}
+.tblsrchtp {  background-color: #FFFFFF; margin-top: 10px; margin-right: 10px; margin-bottom: 0px; margin-left: 10px; border: #333366; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 0px; border-left-width: 1px}
+.fterlogos {  background-color: #FFFFFF; text-align: center; margin-top: 0px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; border-color: #FFFFFF #333366 #333366; border-style: solid; border-top-width: 0px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; padding-top: 5px; padding-right: 0px; padding-bottom: 5px; padding-left: 0px}
+.bodytxrequ {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: xx-small;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	color: Maroon;
+}
+.bluhderslrg {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-style: normal;
+	color: #333366;
+	font-weight: 800;
+	font-variant: normal
+}
