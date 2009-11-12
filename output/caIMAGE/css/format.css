@@ -1,0 +1,21 @@
+.topmenu {
+	border-bottom-color : #663399;
+	border-bottom-style : dotted;
+	border-bottom-width : 2;
+	border-left-color : #663399;
+	border-left-style : dotted;
+	border-left-width : 2;
+}
+
+.lowermenu {
+	border-left-color : #663399;
+	border-left-style : dotted;
+	border-left-width : 2;
+}
+
+.tablebackground {
+	background-image: url(../images/doublehelix.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.content {  font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-style: normal; font-weight: normal; font-variant: normal; color: #000000}
