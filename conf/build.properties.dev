@@ -1,0 +1,3 @@
+db_schema=jdbc:oracle:thin:@cbiodb2-d.nci.nih.gov:1521:CADEV
+db_username=caimagedev
+db_password=dev1234

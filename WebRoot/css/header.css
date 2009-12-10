@@ -1,0 +1,56 @@
+.linktext {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none
+}
+.formcell {
+	background-image: url(../images/formbar.gif);
+	background-repeat: repeat-x;
+	background-color: #666666;
+	padding-left: 7px
+}
+
+.centerline {
+	background-image: url(../images/line.gif);
+	background-repeat: repeat-x;
+	background-position: left center
+}
+
+a.noline:link {
+	text-decoration: none;
+	color: #FFCC00;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bolder;
+}
+
+a.noline:hover {
+	text-decoration: none;
+	color: #FF9900;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+a.noline:active {
+	text-decoration: none;
+	color: #9966CC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+a.noline:visited  {
+	text-decoration: none;
+	color: #FFCC00;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+a:hover {  font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #6699CC}
+a:link {  font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #FFCC00}
+a:visited {  font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #FFCC00}
+a:active {  font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color: #993300}

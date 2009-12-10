@@ -1,0 +1,110 @@
+
+<% response.setDateHeader("Expires",System.currentTimeMillis());%>
+<%//@ include file="html/submission_header.html"%>
+<FORM method="POST" action="redirect.jsp">
+<INPUT TYPE = "HIDDEN" NAME = "mode" VALUE = "<%=mode%>">
+<table align="center" BORDER COLS=1 WIDTH="65%" >
+<!--- <tr>
+<td><b>Note:&nbsp;</b> Currently, we accept the online submission of images of .jpg, .tif, and .sid formats.
+If you would like to submit multiple images, please contact
+<A href=cancerimages@pop.nci.nih.gov</A></b> <img src="images/mailto.gif" alt="mailto.gif">.</td>
+</tr> --->
+</table>
+	<TABLE  border="0" align="center" cellspacing="5" cellpadding="5">
+		<% if (mode != null && mode.equalsIgnoreCase("Submit")||mode==null){%>
+		<!--- <TR valign="TOP" align="center">
+			<TD colspan="2"><H2 class="title">Enter your user name and password !</H2>
+			</TD>
+		</TR> --->
+		<TR align="LEFT" valign="TOP" >
+			<TD align="RIGHT" >				User Name:
+			</TD>
+			<TD>
+				<INPUT name="UserName" type="TEXT" size="20" maxlength="30" value="" tabindex="1">
+			</TD>
+		</TR>
+		<TR align="LEFT" valign="TOP">
+			<TD align="RIGHT">				Password:
+			</TD>
+			<TD>
+				<INPUT type="password" maxlength="20" size="20" name="password" value="" tabindex="2">
+			</TD>
+		</TR>
+		<TR>
+			<TD>				&nbsp;
+			</TD>
+			<TD align="left">
+				<INPUT type="SUBMIT" name="submit_name" value="  Login  " tabindex="3">
+				<INPUT type="RESET" value="  Clear  " tabindex="4">
+			</TD>
+		</TR>
+		
+		
+				<%}%>
+				<% if (mode != null&&mode.equalsIgnoreCase("User"+" " +"Profile")){%>
+				<TR>
+					<TD colspan="2">						If you don't have a user account yet <A href="createuser.jsp?type=new_user"><FONT class="label">sign up now</FONT></A> to submit your Cancer Model.
+					</TD>
+				</TR>
+				<TR>
+					<TD colspan="2">						If you would like to modify your account information, please enter your user name and password to open your account.
+					</TD>
+				</TR>
+				
+				<TR valign="TOP" align="LEFT">
+					<TD>						User Name:
+					</TD>
+					<TD>
+						<INPUT name="UserName" type="TEXT" size="20" maxlength="30" value="" tabindex="1">
+					</TD>
+				</TR>
+				<TR align="left" valign="TOP">
+					<TD>						Password:
+					</TD>
+					<TD>
+						<INPUT type="password" maxlength="20" size="20" name="password" value="" tabindex="2"></td>
+</tr>						<TR>
+							<TD>								&nbsp;
+							</TD>
+							<TD align="left">
+								<INPUT type="SUBMIT" name="submit_name" value="  Next >>>  " tabindex="3">
+								<INPUT type="RESET" value="  Clear  " tabindex="3">
+							</TD>
+						</TR>
+					
+				<%}%>
+				<% if (mode != null&& mode.equalsIgnoreCase("Admin")){%>
+				
+				<TR valign="TOP" align="center">
+			<TD colspan="2"><H2 class="title">Enter your user name and password !</H2>
+			</TD>
+		</TR>
+				
+				<TR valign="TOP" align="LEFT">
+					<TD>						User Name:
+					</TD>
+					<TD>
+						<INPUT name="UserName" type="TEXT" size="20" maxlength="30" value="" tabindex="1">
+					</TD>
+				</TR>
+				<TR align="left" valign="TOP">
+					<TD>						Password:
+					</TD>
+					<TD>
+						<INPUT type="password" maxlength="20" size="20" name="password" value="" tabindex="2"></td>
+</tr>						<TR>
+							<TD>								&nbsp;
+							</TD>
+							<TD align="left">
+								<INPUT type="SUBMIT" name="submit_name" value="  Next >>>  " tabindex="3">
+								<INPUT type="RESET" value="  Clear  " tabindex="3">
+							</TD>
+						</TR>
+					
+				<input type="hidden" name="mode2" value="review"><%}%>
+	</TABLE>
+</FORM>
+
+</BODY>
+
+</HTML>
