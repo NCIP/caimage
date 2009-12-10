@@ -1,4 +1,0 @@
- <%!  String jdbcDriver = "oracle.jdbc.driver.OracleDriver"; %> 
- <%!  String jdbcURL = "jdbc:oracle:thin:@lpgprod.nci.nih.gov:1521:LPG\", \"datop\",\"lpg1234\""; %>
- <%!  String initialConnections = "10"; %>
- <%!  String increments= "10"; %> 

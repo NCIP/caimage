@@ -1,5 +1,0 @@
-driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@cbiodb2-d.nci.nih.gov:1521:LPGDEV
-username=caimagedev
-password=dev1234
-connections=10
