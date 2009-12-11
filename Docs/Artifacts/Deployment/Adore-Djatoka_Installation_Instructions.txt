@@ -1,0 +1,36 @@
+
+Information on Adore-Djatoka software installation and deployment.
+
+
+############  Web Sites ###########################
+
+
+Adore-Djatoka website:  http://sourceforge.net/apps/mediawiki/djatoka/index.php?title=Main_Page
+
+Adore-Djatoka software download:  http://sourceforge.net/projects/djatoka/files/
+
+
+
+
+############  Installation and Deployment #########
+
+To install adore-djatoka and deploy to JBoss:
+
+1) Download the software from the above location and extract the files.
+2) Ensure the following environment variables are set:
+   JAVA_HOME = JDK 1.5 installation location
+   DJATOKA_HOME  = Djatoka installation (e.g. usr/adore-djatoka-1.1)
+   KAKADU_HOME   = Location of the extraction and compression binaries included with the djatoka
+		   installation (e.g. $DJATOKA_HOME/bin/Linux-x86-32)
+   Additionally, add $KAKADU_HOME to the system PATH
+3) Append djatoka java options to the JBoss configuration file:
+   In $JBOSS_HOME/bin/run.conf, find the JAVA_OPTS settings and append the following options:
+	-Djava.awt.headless=true -Dkakadu.home=$KAKADU_HOME -Djava.library.path=$KAKADU_HOME
+4) Deploy to JBoss:
+   In the $DJATOKA_HOME/dist directory is the adore-djatoka.war file. Explode the .war file
+   and name the exploded directory adore-djatoka.war, and copy the directory to the JBoss
+   deployment directory
+
+
+
+vaughng, 12-11-2009
