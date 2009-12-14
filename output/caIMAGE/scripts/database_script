@@ -1,6 +1,0 @@
-update IMAGE_ORGANs a
-set a.ORGAN = (select NCI_CODE from  CTRM_NCI_CODE_MAPPINGS GP where GP.CTRM_CODE = a.organ)
-where a.organ in (select organ from GP)
-update IMAGE_DIAGNOSISES a
-set a.DIAGNOSIS = (select NCI_CODE from  CTRM_NCI_CODE_MAPPINGS where CTRM_NCI_CODE_MAPPINGS.CTRM_CODE = a.DIAGNOSIS )
-where a.DIAGNOSIS in (select CTRM_CODE from CTRM_NCI_CODE_MAPPINGS)
