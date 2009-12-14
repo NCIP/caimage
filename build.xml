@@ -6,18 +6,24 @@
 	<property name="src.java.dir" value="src"/>
 	<property name="conf.dir" value="conf"/>
 	<property name="lib.dir" value="WebRoot/WEB-INF/lib" />
-	<property name="output.dir" value="output/caIMAGE"/>
-	<property name="web.dir" value="output/caIMAGE/WEB-INF"/>
-	<property name="build.classes.dir" value="output/caIMAGE/WEB-INF/classes"/>
+	<property name="lib.exclude" value="WebRoot/libExclude" />
+	<property name="output.dir" value="out/caIMAGE"/>
+	<property name="web.dir" value="${output.dir}/WEB-INF"/>
+	<property name="build.classes.dir" value="${output.dir}/WEB-INF/classes"/>
 	<property name="WebRoot.dir" value="WebRoot"/>
 	<property name="script.dir" value="script"/>
 	
       <!-- Tier specific properties -->
 	<property file="${conf.dir}/system.properties.${tier}" />
+	<property file="${conf.dir}/build.properties.${tier}" />
+	
+	<target name="test_tier">
+		<echo message="${tier}"></echo>
+	</target>
 
 	<!-- This will delete all of the files created by the build process -->
 	<target name="clean">
-		<delete dir="output" quiet="true"/>
+		<delete dir="${output.dir}" quiet="true"/>
 	</target>
 	
 	<!-- This sets up all of the neccessary directories -->
@@ -36,6 +42,9 @@
         <echo message="*****************************************************"/>
 		<path id="cp">
 			<fileset dir="${lib.dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${lib.exclude}">
 				<include name="**/*.jar"/>
 			</fileset>
 		</path>
@@ -60,11 +69,12 @@
 				<include name="system.properties"/>
 				<include name="log4j.properties"/>
 			</fileset>
+			<fileset dir="${src.java.dir}" includes="**/*.csv,**/*.properties"/>
 		</copy>
 		<!-- Pack server file -->
-		<war destfile="output/caIMAGE.war"
+		<war destfile="${output.dir}/caIMAGE.war"
 			webxml="conf/web.xml"
-			basedir="output/caIMAGE"
+			basedir="${output.dir}"
 			excludes="*.war"/>
 	</target>
 	
@@ -91,6 +101,8 @@
 			<replaceregexp file = "${system.properties.generated}" match="CONVFOLDER" replace="${conv_folder}" flags="g"/>
 			<replaceregexp file = "${system.properties.generated}" match="CONVERROR" replace="${conv_error}" flags="g"/>
 			<replaceregexp file = "${system.properties.generated}" match="CACORESERVER" replace="${cacore_server}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="DJATOKA_SERVER" replace="${djatoka_server}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="DJATOKA_IMAGE_PATH" replace="${djatoka_image_path}" flags="g"/>
 	</target>
 				
 	<!-- Run all test cases -->
