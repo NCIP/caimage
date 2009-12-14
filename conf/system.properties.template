@@ -5,6 +5,8 @@ image_server=LIZSERVER
 image_server_path=IMAGEPATH
 image_server_user=IMAGEUSER
 image_server_passwd=IMAGEPASSWD
+djatoka_server=DJATOKA_SERVER
+djatoka_image_path=DJATOKA_IMAGE_PATH
 
 # Properties for the convertor
 convurl=lpgftp.nci.nih.gov
