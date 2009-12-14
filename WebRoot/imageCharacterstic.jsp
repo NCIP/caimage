@@ -51,6 +51,7 @@
 
 			
 				try {
+				    /*
 					url = new URL(imageurl + calcrgn);
 					//logger.debug("The url is"+url);
 					Object abc = url.getContent();
@@ -119,34 +120,80 @@
 							ic.insert();
 						}
 						logger.debug("I reached to end of while"
-										+ annotationid);
-					}//while
-					else
+										+ annotationid); */
+					//}//while
+					/* else
 						break;
 					String bName = request.getHeader("User-Agent");
 					if (bName != null) {
 						logger.debug("I am in header directory" + imagepath
-								+ "Catalog Directory" + catdir);%>
-<tr valign="top" bgcolor="#FFFFFF">
+								+ "Catalog Directory" + catdir); */
+								%>
+
+<%@page import="gov.nih.nci.caIMAGE.util.CatalogDirectoryMap"%><tr valign="top" bgcolor="#FFFFFF">
 	<td align="left" valign="top" width="85">
-		<%String strid = null;
+		<%
+		CatalogDirectoryMap map = null;
+		
+		try {
+			map = CatalogDirectoryMap.getInstance();
+		}
+		catch (Exception e)
+		{
+		    logger.error("Error retrieving directory map");
+		}
+		String imageDir;
+		if (map == null)
+		{
+		    imageDir = "/unknown";
+		}
+		else
+		{
+		    imageDir = map.getImagePath(Annot.getCatalog_id());
+		}
+		String imageName = Annot.getImage_name().trim();
+		String adoreUrl = sysProps.getProperty("djatoka_server");
+		String adoreImagePath  = sysProps.getProperty("djatoka_image_path");
+		String imageUrl = adoreUrl + adoreImagePath + imageDir + imageName;
+		
+		String thumbRequest = adoreUrl + "/resover?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.scale=100&rft_id=" + imageUrl;
+		
+		
+		
+		
+		String strid = null;
 						if (annotationid.longValue() >= 10000) {
 							strid = "stage/" + Annot.getImage_name();
 							logger.debug("i am in if");%>
-		<a href="javascript:showWindow('catalogviewdir.jsp?cat=<%=DatabaseSetup.checkForNull(catdir.trim())%>&img=<%=DatabaseSetup.checkForNull(strid)%>&centerp=<%=number1/2%>,<%=number2/2%>&reslvl=<%=number3%>&wid=400&hei=400')"> <img
-				src="<%=imagepath%><%=DatabaseSetup.checkForNull(catdir.trim())%>&img=<%=DatabaseSetup.checkForNull(strid.trim())%>&thumbspec=" main"  alt="<%=DatabaseSetup.checkForNull(image.trim())%>" target="_blank"> </a>
+		<a href="javascript:showWindow('catalogviewdir.jsp?cat=<%=DatabaseSetup.checkForNull(catdir.trim())%>&img=<%=DatabaseSetup.checkForNull(strid)%>&centerp=<%=number1/2%>,<%=number2/2%>&reslvl=<%=number3%>&wid=400&hei=400')"> 
+		
+		<%
+		String oldThumbReq = "<img src=\"" + imagepath + DatabaseSetup.checkForNull(catdir.trim()) + "&img=" + DatabaseSetup.checkForNull(strid.trim())
+			+ "&thumbspec=\" main\"  alt=\"" + DatabaseSetup.checkForNull(image.trim()) + "\" target=\"_blank\">";
+		%>
+		    
+		<img src="<%=imageUrl %>"/>
+		</a>
 		<br>
 		<%} else {
 							logger.debug("i am in else");%>
-		<a href="javascript:showWindow('catalogviewdir.jsp?cat=<%=DatabaseSetup.checkForNull(catdir.trim())%>&img=<%=DatabaseSetup.checkForNull(image.trim())%>&centerp=<%=number1/2%>,<%=number2/2%>&reslvl=<%=number3%>&wid=400&hei=400')"> <img
-				src="<%=imagepath%><%=DatabaseSetup.checkForNull(catdir.trim())%>&img=<%=DatabaseSetup.checkForNull(image.trim())%>&thumbspec=" main"  alt="<%=DatabaseSetup.checkForNull(image.trim())%>" target="_blank"> </a>
+		<a href="javascript:showWindow('catalogviewdir.jsp?cat=<%=DatabaseSetup.checkForNull(catdir.trim())%>
+		&img=<%=DatabaseSetup.checkForNull(image.trim())%>&centerp=<%=number1/2%>,<%=number2/2%>&reslvl=<%=number3%>&wid=400&hei=400')"> 
+		
+		<%
+		String oldThumbReq = "<img src=\"" + imagepath + DatabaseSetup.checkForNull(catdir.trim()) + "&img=" + DatabaseSetup.checkForNull(image.trim())
+		    + "&thumbspec=\" main\"  alt=\"" + DatabaseSetup.checkForNull(image.trim()) + "\" target=\"_blank\">";
+		    %>
+		
+		 <img src="<%=imageUrl %>"/>
+		</a>
 		<br>
 		<%}%>
 		<%Thread.sleep(100);%>
 		<font FACE="sans-serif" size="-1" color="Red"><%=image%></font>
 
 	</td>
-	<%}
+	<%//}
 					logger.debug("Results starts here");%>
 	<%@ include file="results.jsp"%>
 	<%logger.debug("Results end here");
