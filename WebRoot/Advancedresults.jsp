@@ -525,7 +525,6 @@ function showWindow(imgscr){
 							%>
 		<%@ include file="imageMpeg.jsp"%>
 		<%}%>
-
 		<%}//if
 				}//for 
 
