@@ -4,6 +4,8 @@ liz_server=lpgdev101.nci.nih.gov
 image_path=/usr/local/newLizardTech/External/Donator/Tissue/Diagnosis
 image_user=lizard
 image_passwd=ncicbliz
+djatoka_server=http://ncias-d330-v.nci.nih.gov:19080/adore-djatoka
+djatoka_image_path=images/caimage
 
 # Properties for the convertor
 conv_folder=/encode/enc6

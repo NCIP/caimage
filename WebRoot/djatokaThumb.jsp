@@ -20,14 +20,14 @@
 		}
 		else
 		{
-		    imageDir = map.getImagePath(Annot.getCatalog_id());
+		    imageDir = map.getImagePath(catalog.longValue());
 		}
 		String imageName = Annot.getImage_name().trim();
 		String adoreUrl = sysProps.getProperty("djatoka_server");
 		String adoreImagePath  = sysProps.getProperty("djatoka_image_path");
 		String imageUrl = adoreUrl + "/" + adoreImagePath + "/" + imageDir + "/" + imageName;
 		
-		String viewerLink = "javascript:showWindow('" +"viewer.html?rft_id=" + imageUrl + "');";
+		String viewerLink = "javascript:showWindow('" +"viewer.jsp?rft_id=" + imageUrl + "');";
 		String thumbRequest = adoreUrl + "/resolver?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.scale=100&rft_id=" + imageUrl;
 		
 		%>

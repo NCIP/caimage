@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+    <%@ page language="java"%>
+    <%@ page import="java.io.*"%>
+    <%@ page import="java.util.*"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
 
  <head>
@@ -17,11 +20,25 @@
   <script type="text/javascript" src="javascript/mootools-1.2-core-compressed.js"></script>
   <script type="text/javascript" src="javascript/mootools-1.2-more-compressed.js"></script>
   <script type="text/javascript" src="javascript/iipmooviewer-1.1.js"></script>
-
+<% 
+			InputStream in = null;
+			Properties sysProps = new Properties();
+			try {
+				in = Thread.currentThread().getContextClassLoader()
+						.getResourceAsStream("system.properties");
+				sysProps.load(in);
+			} catch (Exception e) {
+				System.err.println("Error loading system.properties file");
+				e.printStackTrace();
+			}
+			
+			String adoreUrl = sysProps.getProperty("djatoka_server");
+			String adoreServer = adoreUrl + "/resolver";
+			%>
   <script type="text/javascript">
 
     // The iipsrv server path (/fcgi-bin/iipsrv.fcgi by default)
-    var server = 'http://localhost:8080/adore-djatoka/resolver';
+    var server = '<%=adoreServer%>';
 
     // The *full* image path on the server. This path does *not* need to be in the web
     // server root directory. On Windows, use Unix style forward slash paths without
