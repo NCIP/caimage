@@ -1,0 +1,15 @@
+liz_httpserver=http://caimage.nci.nih.gov/lizardtech
+liz_httpstyle=http://caimage.nci.nih.gov/StyleServer
+liz_server=lpgftp.nci.nih.gov
+image_path=/Images/External/Donator/Tissue/Diagnosis
+image_user=lizupload
+image_passwd=ncicblts
+djatoka_server=http://localhost:8080/adore-djatoka
+djatoka_image_path=images/caimage
+
+# Properties for the convertor
+conv_folder=/encode/enc6
+conv_error=/encode/enc6/Error
+#cacore_server=http://cbioqa101.nci.nih.gov:49080/cacore31/http/remoteService
+cacore_server=http://cabio.nci.nih.gov/cacore31/http/remoteService
+

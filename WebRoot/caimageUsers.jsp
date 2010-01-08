@@ -82,7 +82,7 @@
 						&nbsp;
 					</td>
 					<td align="center" colspan="3">
-						<a href="caimageSubmit.jsp" class="bodytxrequ">Add new Image</a>
+						<%-- <a href="caimageSubmit.jsp" class="bodytxrequ">Add new Image</a> --%>
 					</td>
 					<td>
 						&nbsp;

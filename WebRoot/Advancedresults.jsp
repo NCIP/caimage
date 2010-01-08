@@ -507,10 +507,11 @@ function showWindow(imgscr){
 						image_type = image_trim.substring(annotationimagename,
 								Annot.getImage_name().length() - 1);
 					
-						if (image_type.equals(".si")
-								|| image_type.equals("sid")) {
+						if (image_type.equals(".ti")
+								|| image_type.equals("tif")) {
 							logger.debug("I am in sid loop");%>
-		<%@ include file="imageCharacterstic.jsp"%>
+		<%-- <%@ include file="imageCharacterstic.jsp"%> --%>
+		<%@ include file="djatokaThumb.jsp"%>
 		<%} else if (image_type.equals(".pf")
 								|| image_type.equals(".pff")) {//This is not sid 
 							logger.debug("I am in not in sid loop");
@@ -524,7 +525,6 @@ function showWindow(imgscr){
 							%>
 		<%@ include file="imageMpeg.jsp"%>
 		<%}%>
-
 		<%}//if
 				}//for 
 
