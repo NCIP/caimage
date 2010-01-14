@@ -330,12 +330,11 @@ function showWindow(imgscr){
 								.length() - 4;
 						image_type = image_trim.substring(annotationimagename,
 								Annot.getImage_name().length() - 1);
-						if (!image_type.equals(".pf") || !image_type.equals(".pff")) {
+						if (image_trim.indexOf(".pff") < 0) {
 						%>
 		<%-- <%@ include file="imageCharacterstic.jsp"%> --%>
 		<%@ include file="djatokaThumb.jsp"%>
-		<%} else if (image_type.equals(".pf")
-								|| image_type.equals(".pff")) {%>
+		<%} else if (image_trim.indexOf(".pff") > 0) {%>
 						
 			<%@ include file="imageZoomify.jsp"%>
 		<%}	%>

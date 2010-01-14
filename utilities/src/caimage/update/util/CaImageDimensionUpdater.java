@@ -48,6 +48,7 @@ public class CaImageDimensionUpdater
                 System.out.println("Results match for file: " + result.name);
             }
         }
+        System.exit(0);
         }
         catch (Exception e)
         {

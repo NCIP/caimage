@@ -133,25 +133,25 @@ if((fieldsToBlank==undefined)||(fieldsToBlank=='')){
 		if((roleType==undefined)||(roleType=='')){
 
 //alert(1)
-		targetURL = '/IEVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+		targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 		} else {
 //alert(2)
-		targetURL = '/IEVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+		targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 		}
 	} else {
 //alert(3)
-	targetURL = '/IEVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';rootTop='+rootTop+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+	targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';rootTop='+rootTop+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 	
 	}
 }
 else {
 //alert(4)
 	if((roleType==undefined)||(roleType=='')){
-			targetURL = '/IEVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';sementicType='+sementicType+';formName='+form+';fieldsToBlank='+fieldsToBlank+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+			targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';sementicType='+sementicType+';formName='+form+';fieldsToBlank='+fieldsToBlank+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 
 			} else {
 //alert(5)
-			targetURL = '/IEVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';fieldsToBlank='+fieldsToBlank+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+			targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';fieldsToBlank='+fieldsToBlank+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 //alert(2)
 			}
 	

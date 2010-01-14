@@ -15,6 +15,8 @@ import java.util.Calendar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 
@@ -43,6 +45,11 @@ public class SidImageConverter
     private static String ALT_FMT_2 = "jpg";
     private static String ALT_EXT_2 = ".jpg";
     
+    private static Boolean MUTEX = new Boolean(false);
+    private static boolean running = false;
+    private static Timer timer = new Timer();
+    private static long WAIT_TIME = 1000 * 60 * 10;
+    
     private static Map<String,File> conversionMap = new LinkedHashMap<String,File>();
     private static List<ConversionResult> conversionResults = new ArrayList<ConversionResult>();
     private static CatalogMap catalogMap;
@@ -56,8 +63,32 @@ public class SidImageConverter
             catalogMap = new CatalogMap();
             
             SidImageConverter converter = new SidImageConverter();
+            
+            System.out.println("Props: ");
+            System.out.println(PropertyUtils.getProperty("sid.dir"));
+            System.out.println(PropertyUtils.getProperty("convert.dir"));
+            System.out.println(PropertyUtils.getProperty("mrsid.app"));
+            
             File startDir = new File(PropertyUtils.getProperty("sid.dir"));
             File convertDir = new File(PropertyUtils.getProperty("convert.dir"));
+            File app = new File(PropertyUtils.getProperty("mrsid.app"));
+            
+            System.out.println("start directory: " + startDir.getAbsolutePath());
+            System.out.println("conversion directory: " + convertDir.getAbsolutePath());
+            System.out.println("app file" + app.getAbsolutePath());
+            
+            if (!startDir.exists())
+            {
+                System.out.println("invalid startdir, exiting program.");
+                System.exit(0);
+            }
+            
+            if (!app.exists())
+            {
+                System.out.println("invalid appfile, exiting program.");
+                System.exit(0);
+            }
+            
             if (!convertDir.exists())
                 convertDir.mkdirs();
             
@@ -110,7 +141,7 @@ public class SidImageConverter
                 errorFile.createNewFile();
             }
             converter.writeErrorFile(errorFile);
-            
+            System.exit(0);
         }
         catch (Exception e)
         {
@@ -168,6 +199,8 @@ public class SidImageConverter
      */
     private void convertFile(File file, File convertDir, String format, String ext, ConversionResult result)
     {
+        if (file.getName().indexOf(".") < 0)
+            return;
         
         String noExt = file.getName().substring(0,file.getName().lastIndexOf("."));       
         String newFileName = convertDir.getAbsolutePath() + File.separator + noExt + ext;
@@ -183,7 +216,7 @@ public class SidImageConverter
                 conversionResults.add(result);
             }
             String c = PropertyUtils.getProperty("mrsid.app");
-            
+            System.out.println("Mr sid application: " + c);
             String[] cmdarray = new String[]{c,"-i",file.getAbsolutePath(),"-o",newFileName,"-of",format};
             
             Process process;
@@ -191,8 +224,9 @@ public class SidImageConverter
             {
                 System.out.println("Converting file " + file.getPath() + " ...");
                 process = Runtime.getRuntime().exec(cmdarray);
-                //process.waitFor();
-                
+                startTimer(Thread.currentThread());
+                process.waitFor();
+                stopTimer();
             }
             catch (Exception e)
             {
@@ -370,6 +404,39 @@ public class SidImageConverter
       }
       
       return retVal;
+    }
+    
+    private static void startTimer(Thread t)
+    {
+        final Thread runningThread = t;
+        synchronized (MUTEX)
+        {
+            running = true;
+            TimerTask task = new TimerTask(){
+
+                public void run()
+                {
+                    if (running)
+                    {
+                        runningThread.interrupt();
+                        System.out.println("WARN ... Interrupting conversion thread after 10 minutes.");
+                    }
+                        
+                }
+                
+            };
+            timer = new Timer();
+            timer.schedule(task, WAIT_TIME);
+        }
+    }
+    
+    private static void stopTimer()
+    {
+        synchronized (MUTEX)
+        {
+            running = false;
+            timer.cancel();
+        }
     }
     
     static class ConversionResult

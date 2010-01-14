@@ -23,15 +23,15 @@ To install adore-djatoka and deploy to JBoss:
    KAKADU_HOME   = Location of the extraction and compression binaries included with the djatoka
 		   installation (e.g. $DJATOKA_HOME/bin/Linux-x86-32)
    Additionally, add $KAKADU_HOME to the system PATH
-4) Add the following lines to the JBoss configuration file to establish environment settings for djatoka:
+3) Add the following lines to the JBoss configuration file to establish environment settings for djatoka:
    CWD=`pwd`
    cd $DJATOKA_HOME/bin
    . $DJATOKA_HOME/bin/env.sh
    cd $CWD
-3) Append djatoka java options to the JBoss configuration file:
+4) Append djatoka java options to the JBoss configuration file:
    In $JBOSS_HOME/bin/run.conf, find the JAVA_OPTS settings and append the following options:
 	-Djava.awt.headless=true -Dkakadu.home=$KAKADU_HOME -Djava.library.path=$KAKADU_HOME
-4) Deploy to JBoss:
+5) Deploy to JBoss:
    In the $DJATOKA_HOME/dist directory is the adore-djatoka.war file. Explode the .war file
    and name the exploded directory adore-djatoka.war, and copy the directory to the JBoss
    deployment directory

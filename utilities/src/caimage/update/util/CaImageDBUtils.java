@@ -1,4 +1,6 @@
 package caimage.update.util;
+import gov.nih.nci.caimage.db.Annotation;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -33,6 +35,36 @@ public class CaImageDBUtils
         
         Connection loccon = DriverManager.getConnection(url, usr, pwd);
         return loccon;
+    }
+    
+    public static void insertAnnotationData(Annotation annotation) throws SQLException, ClassNotFoundException
+    {
+        Connection con = getConnection();
+        
+        try
+        {
+        String insert = "insert into annotations (annotation_id, image_name, image_description, species_id) values(" + annotation.getAnnotation_id() + 
+        ",'" + annotation.getImage_name() +"','" + annotation.getImage_description() + "'," + annotation.getSpecies_id() + ")";
+        Statement st = con.createStatement();
+        st.executeUpdate(insert);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            throw e;
+        }
+        finally
+        {
+            try
+            {
+                con.close();
+            }
+            catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        
     }
     
     public static int getAnnotationId(String imageName) throws SQLException, ClassNotFoundException

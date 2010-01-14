@@ -79,6 +79,7 @@ public class CaImageNameUpdater
             
             updater.writeResultsFile();
             loccon.commit();
+            System.exit(0);
         }
         catch (Exception e)
         {

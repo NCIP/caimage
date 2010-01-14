@@ -27,7 +27,15 @@
 		String adoreImagePath  = sysProps.getProperty("djatoka_image_path");
 		String imageUrl = adoreUrl + "/" + adoreImagePath + "/" + imageDir + "/" + imageName;
 		
-		String viewerLink = "javascript:showWindow('" +"viewer.jsp?rft_id=" + imageUrl + "');";
+		String viewerLink;
+		if (imageName.endsWith(".jpg"))
+		{
+		    viewerLink = "javascript:showWindow('" + imageUrl + "')";
+		}
+		else
+		{
+		    viewerLink = "javascript:showWindow('" +"viewer.jsp?rft_id=" + imageUrl + "');";
+		}
 		String thumbRequest = adoreUrl + "/resolver?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.scale=100&rft_id=" + imageUrl;
 		
 		%>

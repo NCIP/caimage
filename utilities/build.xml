@@ -11,6 +11,7 @@
 	<property name="jar.sid.file" value="${basedir}/caimage-sid-converter.jar" />
 	<property name="jar.name.file" value="${basedir}/caimage-name-updater.jar" />
 	<property name="jar.dim.file" value="${basedir}/caimage-dimension-updater.jar" />
+	<property name="jar.submit.file" value="${basedir}/caimage-submit.jar" />
 
 
 	<!-- ******************************************************************* -->
@@ -22,10 +23,17 @@
 
 	<target name="compile">
 		<mkdir dir="${classes.dir}" />
+		<copy todir="${classes.dir}">
+			<fileset dir="../out/caIMAGE/WEB-INF/classes"/>
+		</copy> 
 		<javac srcdir="${src.dir}" includes="**/*.java,*.properties" destdir="${classes.dir}" debug="true">
 			<classpath>
 				<fileset dir="${lib.dir}">
 					<include name="**/*.jar" />
+				</fileset>
+				<fileset dir="../out/caIMAGE/WEB-INF/classes">
+					<include name="**/*.jar" />
+					<include name="**/*.class" />
 				</fileset>
 			</classpath>
 		</javac>
@@ -53,6 +61,9 @@
 	<manifestclasspath property="jar.dim.classpath" jarfile="${jar.dim.file}">
 		<classpath refid="jar.classpath" />
 	</manifestclasspath>
+	<manifestclasspath property="jar.submit.classpath" jarfile="${jar.submit.file}">
+			<classpath refid="jar.classpath" />
+		</manifestclasspath>
 
 	<target name="jar" depends="clean,compile">
 
@@ -81,6 +92,14 @@
 				<attribute name="Class-Path"  value="${jar.dim.classpath}"/>
 			</manifest>
 		</jar>
+		
+		<delete file="${jar.submit.file}" />
+				<jar destfile="${jar.submit.file}" basedir="${classes.dir}" includes="**/*.class,**/*.properties,**/*.csv">
+					<manifest>
+						<attribute name="Main-Class" value="caimage.update.util.SubmitImage" />
+						<attribute name="Class-Path"  value="${jar.submit.classpath}"/>
+					</manifest>
+				</jar>
 
 	</target>
 	
