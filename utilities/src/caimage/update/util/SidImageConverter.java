@@ -40,8 +40,8 @@ public class SidImageConverter
 
     private static String FMT = "TIFF";
     private static String FILE_EXT = ".tif";
-    private static String ALT_FMT = "bmp";
-    private static String ALT_EXT = ".bmp";
+    //private static String ALT_FMT = "bmp";
+    //private static String ALT_EXT = ".bmp";
     private static String ALT_FMT_2 = "jpg";
     private static String ALT_EXT_2 = ".jpg";
     
@@ -98,15 +98,15 @@ public class SidImageConverter
             
             // For all files not successfully converted to the desired format,
             // attempt alternate formats
-            for (ConversionResult conversionResult : conversionResults)
+            /*for (ConversionResult conversionResult : conversionResults)
             {
                 if (conversionResult.successCode != 0)
                 {
                     File file = new File(conversionResult.originalFile);
                     converter.convertFile(file, conversionMap.get(file.getAbsolutePath()), ALT_FMT, ALT_EXT, conversionResult);
                 }
-            }
-            for (ConversionResult conversionResult : conversionResults)
+            }*/
+            /*for (ConversionResult conversionResult : conversionResults)
             {
                 if (conversionResult.successCode != 0)
                 {
@@ -114,8 +114,16 @@ public class SidImageConverter
                     converter.convertFile(file, conversionMap.get(file.getAbsolutePath()), ALT_FMT_2, ALT_EXT_2, conversionResult);
                 }
             }
+            for (ConversionResult conversionResult : conversionResults)
+            {
+                if (conversionResult.successCode != 0)
+                {
+                    File file = new File(conversionResult.originalFile);
+                    converter.copyFile(file, conversionMap.get(file.getAbsolutePath()));
+                }
+            }*/
             
-            SimpleDateFormat df = new SimpleDateFormat("MM.dd.yy.mm.ss");
+            SimpleDateFormat df = new SimpleDateFormat("MM.dd.yy.HH.mm.ss");
             String successFileName = "Conversion_Success_Results_" + df.format(Calendar.getInstance().getTime()) + ".csv";
             File successFile = new File(successFileName);
             if (!successFile.exists())
@@ -177,7 +185,8 @@ public class SidImageConverter
                 }
                 else
                 {
-                    convertFile(file,convertDir,format,ext,null);
+                    //convertFile(file,convertDir,format,ext,null);
+                    checkFile(file, convertDir, null);
                 }
             }
             
@@ -201,10 +210,15 @@ public class SidImageConverter
     {
         if (file.getName().indexOf(".") < 0)
             return;
+        conversionMap.put(file.getAbsolutePath(), convertDir);
+        
+        if (checkFile(file, convertDir, result))
+            return;
+        
         
         String noExt = file.getName().substring(0,file.getName().lastIndexOf("."));       
         String newFileName = convertDir.getAbsolutePath() + File.separator + noExt + ext;
-        conversionMap.put(file.getAbsolutePath(), convertDir);
+        
         if (file.getName().endsWith(".sid") && !(new File(newFileName).exists()))
         {
             if (result == null)
@@ -224,8 +238,9 @@ public class SidImageConverter
             {
                 System.out.println("Converting file " + file.getPath() + " ...");
                 process = Runtime.getRuntime().exec(cmdarray);
-                startTimer(Thread.currentThread());
+                startTimer(Thread.currentThread(),process);
                 process.waitFor();
+                
                 stopTimer();
             }
             catch (Exception e)
@@ -291,6 +306,8 @@ public class SidImageConverter
         }
         else
         {
+            copyFile(file, convertDir);
+            /*
             File newFile = new File(convertDir + File.separator + file.getName());
             if (!newFile.exists())
             {
@@ -314,6 +331,120 @@ public class SidImageConverter
                     System.out.println("File could not be created: " + newFile.getAbsolutePath());
                 }
                 
+            }
+            
+        */}
+        
+    }
+    
+    private boolean checkFile(File file, File convertDir, ConversionResult result)
+    {
+        if (file.getName().indexOf(".") < 0)
+            return false;
+        
+        
+        
+        
+        String noExt = file.getName().substring(0,file.getName().lastIndexOf("."));   
+        
+        if (file.getName().endsWith(".sid")){
+        for (String ext : new String[]{FILE_EXT, ALT_EXT_2})
+        {
+            String newFileName = convertDir.getAbsolutePath() + File.separator + noExt + ext;
+            
+            File convertedFile = new File(newFileName);
+            if (convertedFile.exists())
+            {
+                if (result == null)
+                {
+                    result = new ConversionResult();
+                    result.successCode = 0;
+                    result.originalFile = file.getAbsolutePath();
+                    result.originalName = file.getName();
+                    result.catalogId = getCatalogId(convertedFile);
+                    conversionResults.add(result);
+                }
+                result.success = true;
+                result.successFile = newFileName;
+                result.successExt = ext;
+                System.out.println("Converted " + file.getPath() + " to " + newFileName); 
+                
+                String badCopy = convertDir.getAbsolutePath() + File.separator + noExt + ".sid";
+                File badFile = new File(badCopy);
+                if (badFile.exists())
+                {
+                    System.out.println("Deleting redundant copy " + badFile.getAbsolutePath());
+                    boolean deleted = badFile.delete();
+                    System.out.println("Deleted? - " + deleted);
+                }
+                return true;
+            }
+        }}
+        
+        String copy = convertDir.getAbsolutePath() + File.separator + file.getName();
+        File copied = new File(copy);
+        if (!copied.exists())
+        {
+            if (result == null)
+            {
+                result = new ConversionResult();
+                result.successCode = 1;
+                result.originalFile = file.getAbsolutePath();
+                result.originalName = file.getName();
+                //result.catalogId = getCatalogId(convertedFile);
+                conversionResults.add(result);
+            }
+            result.success = false;
+            //result.successFile = newFileName;
+            //result.successExt = ext;
+            result.errorFiles.add(copy);
+            result.errorMessages.add("File was not converted or copied.");
+            System.out.println("File was not converted or copied: " + file.getAbsolutePath()); 
+        }
+        else if (copy.endsWith(".sid"))
+        {
+            if (result == null)
+            {
+                result = new ConversionResult();
+                result.successCode = 1;
+                result.originalFile = file.getAbsolutePath();
+                result.originalName = file.getName();
+                //result.catalogId = getCatalogId(convertedFile);
+                conversionResults.add(result);
+            }
+            result.success = false;
+            //result.successFile = newFileName;
+            //result.successExt = ext;
+            result.errorFiles.add(copy);
+            result.errorMessages.add("Sid file was copied, not converted");
+            System.out.println("Sid file was copied, not converted: " + file.getAbsolutePath()); 
+        }
+        return false;
+    }
+    
+    private void copyFile(File file, File convertDir)
+    {
+        File newFile = new File(convertDir + File.separator + file.getName());
+        if (!newFile.exists())
+        {
+            try
+            {
+                BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(newFile));
+                int bite = 16384;
+                int read;
+                byte[] b = new byte[bite];
+                BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
+                while((read = in.read(b)) > 0)
+                {
+                    writer.write(b);
+                }
+                in.close();
+                writer.flush();
+                writer.close();
+            }
+            catch (IOException e)
+            {
+                System.out.println("File could not be created: " + newFile.getAbsolutePath());
             }
             
         }
@@ -406,9 +537,10 @@ public class SidImageConverter
       return retVal;
     }
     
-    private static void startTimer(Thread t)
+    private static void startTimer(Thread t, Process proc)
     {
         final Thread runningThread = t;
+        final Process process = proc;
         synchronized (MUTEX)
         {
             running = true;
@@ -418,6 +550,7 @@ public class SidImageConverter
                 {
                     if (running)
                     {
+                        process.destroy();
                         runningThread.interrupt();
                         System.out.println("WARN ... Interrupting conversion thread after 10 minutes.");
                     }

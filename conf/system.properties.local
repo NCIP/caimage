@@ -5,8 +5,10 @@ image_path=/Images/External/Donator/Tissue/Diagnosis
 image_user=lizupload
 image_passwd=ncicblts
 djatoka_server=http://localhost:8080/adore-djatoka
+#djatoka_image_base=http://localhost:8080/adore-djatoka
+djatoka_image_base=file:////C:/jboss-5.1.0.GA/server/default/deploy/adore-djatoka.war
 djatoka_image_path=images/caimage
-
+zoomify=http://zoomifyimg-dev.nci.nih.gov/zoomify/
 # Properties for the convertor
 conv_folder=/encode/enc6
 conv_error=/encode/enc6/Error

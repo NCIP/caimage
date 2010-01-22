@@ -68,7 +68,7 @@ public class CatalogMap
     
     public int getCatalogId(File dir)
     {
-        
+        System.out.println("Checking catalog id for dir: " + dir);
         File baseDir = new File(PropertyUtils.getProperty("image.basedir"));
         
         int id = -1;
@@ -76,6 +76,7 @@ public class CatalogMap
         {
             String absDir = baseDir + File.separator + dirName;
             File compDir = new File(absDir);
+            //System.out.println("Comparing to dir: " + compDir.getAbsolutePath());
             if (compDir.equals(dir))
             {
                 id = dirMap.get(dirName).catalogId;

@@ -1,6 +1,7 @@
 <%@page import="gov.nih.nci.caIMAGE.util.CatalogDirectoryMap"%><tr valign="top" bgcolor="#FFFFFF">
 	<td align="left" valign="top" width="85">
 		<%
+		logger.debug("Annot == null" + (Annot == null));
 		catalog = Annot.getCatalog_id();
 		annotationid = Annot.getAnnotation_id();
 		
@@ -25,18 +26,23 @@
 		String imageName = Annot.getImage_name().trim();
 		String adoreUrl = sysProps.getProperty("djatoka_server");
 		String adoreImagePath  = sysProps.getProperty("djatoka_image_path");
-		String imageUrl = adoreUrl + "/" + adoreImagePath + "/" + imageDir + "/" + imageName;
+		String adoreImageBase  = sysProps.getProperty("djatoka_image_base");
+		String imageUrl = adoreImageBase + "/" + adoreImagePath + "/" + imageDir + "/" + imageName;
 		
 		String viewerLink;
-		if (imageName.endsWith(".jpg"))
+		String thumbRequest;
+		if (!imageName.endsWith(".tif"))
 		{
 		    viewerLink = "javascript:showWindow('" + imageUrl + "')";
+		    thumbRequest = adoreUrl + "/resolver?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.scale=100&rft_id=" + imageUrl;
+			
 		}
 		else
 		{
 		    viewerLink = "javascript:showWindow('" +"viewer.jsp?rft_id=" + imageUrl + "');";
+		    thumbRequest = adoreUrl + "/resolver?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.scale=100&rft_id=" + imageUrl;
+			
 		}
-		String thumbRequest = adoreUrl + "/resolver?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.scale=100&rft_id=" + imageUrl;
 		
 		%>
 		
@@ -48,7 +54,7 @@
 			+ "&thumbspec=\" main\"  alt=\"" + DatabaseSetup.checkForNull(image.trim()) + "\" target=\"_blank\">";
 		--%>
 		    
-		<img src="<%=thumbRequest %>"/>
+		<img src="<%=thumbRequest %>" width="100"/>
 		</a>
 		<br>
 		

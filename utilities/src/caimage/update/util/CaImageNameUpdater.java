@@ -90,12 +90,12 @@ public class CaImageNameUpdater
 
     private void updateImageName(Connection con, String imageName, String newName, int catalogId) throws SQLException
     {
-        String select = "select annotation_id from annotations where image_name = (?) and catalog_id = (?)";
+        String select = "select annotation_id from annotations where image_name like '%" + imageName + "%' and catalog_id = (?)";
         String update = "update annotations set image_name = (?) where annotation_id = (?)";
         
         PreparedStatement find = con.prepareStatement(select);
-        find.setString(1, imageName);
-        find.setInt(2, catalogId);
+        //find.setString(1, imageName);
+        find.setInt(1, catalogId);
         
         List<UpdateResults> updates = new ArrayList<UpdateResults>();
         
@@ -112,6 +112,7 @@ public class CaImageNameUpdater
             updates.add(results);
         }
         frs.close();
+        find.close();
         
         if (!updates.isEmpty())
         {
@@ -125,6 +126,10 @@ public class CaImageNameUpdater
             }
             set.close();
             updateResults.addAll(updates);
+        }
+        else
+        {
+            System.out.println("No updates for image: " + imageName + " select: " + select + " catalog: " + catalogId);
         }
         
     }

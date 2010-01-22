@@ -61,12 +61,12 @@ conceptCode = document.main.diagnosisCode.name;
 //leafNode=true;
 	if ((speciesValue== "") || (speciesValue == null)|| (speciesValue== "Mouse")) {
 	//temporarily hard coded till the EVS tree resolved
-	 organvalue = 'Mouse_Disorder_by_Site'; 
+	 organvalue = 'MouseDiagnosis'; 
 		if (organvalue){
 	  	showDiagnosisTree(form, conceptCode, conceptName, displayName, leafNode, organvalue)
 	  	} 
  	}else if ((speciesValue== "human") || (speciesValue == "Human")) {
- 	organvalue = 'Disorder_by_Site';
+ 	organvalue = 'HumanDiagnosis';
  	showHumanDiagnosisTree(form, conceptCode, conceptName, displayName, leafNode, organvalue)
 	} 
 	else {

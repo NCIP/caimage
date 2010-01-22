@@ -43,8 +43,8 @@ public class CaImageDBUtils
         
         try
         {
-        String insert = "insert into annotations (annotation_id, image_name, image_description, species_id) values(" + annotation.getAnnotation_id() + 
-        ",'" + annotation.getImage_name() +"','" + annotation.getImage_description() + "'," + annotation.getSpecies_id() + ")";
+        String insert = "insert into annotations (annotation_id, image_name, image_description, species_id, catalog_id) values(" + annotation.getAnnotation_id() + 
+        ",'" + annotation.getImage_name() +"','" + annotation.getImage_description() + "'," + annotation.getSpecies_id() + "," + annotation.getCatalog_id() + ")";
         Statement st = con.createStatement();
         st.executeUpdate(insert);
         }

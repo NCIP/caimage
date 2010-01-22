@@ -8,7 +8,8 @@
 	
     {
       
-	var rootNode = 'Murine_Tissue_Type';
+	//var rootNode = 'Murine_Tissue_Type';
+	var rootNode = 'MouseTissue';
 	var roleType= '';
 	var sementicType = 'T023,T024,T025';
 	var title = 'Tissue Select';
@@ -20,7 +21,8 @@
 //for field to blank
 function showTissueTree(form, inConceptCode, inConceptName, inDisplayName, leafNode, fieldsToBlank)
  {
-      	var rootNode = 'Murine_Tissue_Type';
+      	//var rootNode = 'Murine_Tissue_Type';
+      	var rootNode = 'MouseTissue';
 	var roleType= '';
 	var sementicType = 'T023,T024,T025';
 	var title = 'Tissue Select';
@@ -47,7 +49,7 @@ function showHumanTissueTree(form, inConceptCode, inConceptName, inDisplayName, 
 //for field to blank
 function showHumanTissueTree(form, inConceptCode, inConceptName, inDisplayName, leafNode, fieldsToBlank)
  {
-      	var rootNode = 'Organ_System';
+      	var rootNode = 'HumanTissue';
 	var roleType= 'Anatomic_Structure_Is_Physical_Part_Of';
 	var sementicType = 'T023,T017';
 	var title = 'Human Tissue Select';
@@ -84,7 +86,7 @@ function showHumanTissueTree(form, inConceptCode, inConceptName, inDisplayName, 
 	var sementicType = 'T047,T191';
 	var title = 'Diagnosis Select';
 	var params = ["true", "true", "-1", "0"];
-	var postMsg = true;
+	var postMsg = false;
 
 	
 	showTree(form, inConceptCode, inConceptName, inDisplayName, rootNode, roleType, sementicType,  skin, params, leafNode, title, '', postMsg, rootTop)
@@ -101,7 +103,7 @@ function showHumanTissueTree(form, inConceptCode, inConceptName, inDisplayName, 
 		var sementicType = 'T047,T191';
 		var title = 'Diagnosis Select';
 		var params = ["true", "true", "-1", "0"];
-		var postMsg = true;
+		var postMsg = false;
 	
 		
 		showTree(form, inConceptCode, inConceptName, inDisplayName, rootNode, roleType, sementicType,  skin, params, leafNode, title, '', postMsg, rootTop)
@@ -133,25 +135,25 @@ if((fieldsToBlank==undefined)||(fieldsToBlank=='')){
 		if((roleType==undefined)||(roleType=='')){
 
 //alert(1)
-		targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+		targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=treeNameKey='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 		} else {
 //alert(2)
-		targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+		targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=treeNameKey='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 		}
 	} else {
 //alert(3)
-	targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';rootTop='+rootTop+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+	targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=treeNameKey='+rootNode+';rootTop='+rootTop+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 	
 	}
 }
 else {
 //alert(4)
 	if((roleType==undefined)||(roleType=='')){
-			targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';sementicType='+sementicType+';formName='+form+';fieldsToBlank='+fieldsToBlank+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+			targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=treeNameKey='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';sementicType='+sementicType+';formName='+form+';fieldsToBlank='+fieldsToBlank+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 
 			} else {
 //alert(5)
-			targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=rootNode='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';fieldsToBlank='+fieldsToBlank+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
+			targetURL = '/EVSTree/webtree/WebTreeMain.jsp?treeParams=treeNameKey='+rootNode+';conceptName='+conceptName+';conceptCode='+conceptCode+';displayName='+displayName+';descendants='+descendants+';isaFlag='+isaFlag+';depthLevel='+depthLevel+';attributes='+attribute+';onlyLeaf='+leafNode+';roleType='+roleType+';sementicType='+sementicType+';formName='+form+';fieldsToBlank='+fieldsToBlank+';postMsg='+postMsg+';&skin='+skin+'&windowTitle='+title+'&rand='+glob;
 //alert(2)
 			}
 	

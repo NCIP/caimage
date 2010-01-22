@@ -6,6 +6,7 @@ image_server_path=IMAGEPATH
 image_server_user=IMAGEUSER
 image_server_passwd=IMAGEPASSWD
 djatoka_server=DJATOKA_SERVER
+djatoka_image_base=DJATOKA_IMAGE_BASE
 djatoka_image_path=DJATOKA_IMAGE_PATH
 
 # Properties for the convertor
@@ -14,7 +15,8 @@ convpath=CONVFOLDER
 convusername=lizupload
 convpwd=ncicblts
 converrorpath=CONVERROR
-zoomify=http://zoomifyimg-dev.nci.nih.gov/zoomify/
+#zoomify=http://zoomifyimg-dev.nci.nih.gov/zoomify/
+zoomify=ZOOMIFY
 qaserver=CACORESERVER
 
 # FTP Properties

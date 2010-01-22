@@ -39,10 +39,10 @@
 		<%String strid = null;
 
 						%>
-		<a href="javascript:showWindow('<%=imagepath%>ZoomPages/zoomifyDynamic.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1')"> <font FACE="sans-serif" size="-4">Simple Viewer</font> </a> <a
-			href="javascript:showWindow('<%=imagepath%>ZoomPages/zoomifyDynamic.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1')"> <img src="<%=imagepath%>servlet/zoomifyservlet.ZoomifyServlet?file=/ZoomImages/zoomify/<%=catdir%>/<%=image%>" width="60">
-		</a> <a href="javascript:showWindow('<%=imagepath%>zas/ZAS.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1')"> <font FACE="sans-serif" size="-4">Advanced Viewer</font> </a> <a
-			href="javascript:showWindow('<%=imagepath%>zas/ZAS.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1')"> <img src="<%=imagepath%>servlet/zoomifyservlet.ZoomifyServlet?file=/ZoomImages/zoomify/<%=catdir%>/<%=image%>" width="60"> </a> <font
+		<a href="javascript:showWindow('<%=imagepath%>ZoomPages/zoomifyDynamic.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyDir %>')"> <font FACE="sans-serif" size="-4">Simple Viewer</font> </a> <a
+			href="javascript:showWindow('<%=imagepath%>ZoomPages/zoomifyDynamic.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyDir %>')"> <img src="<%=imagepath%>servlet/zoomifyservlet.ZoomifyServlet?file=/ZoomImages/zoomify/<%=catdir%>/<%=image%>" width="60">
+		</a> <a href="javascript:showWindow('<%=imagepath%>zas/ZAS.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyDir %>')"> <font FACE="sans-serif" size="-4">Advanced Viewer</font> </a> <a
+			href="javascript:showWindow('<%=imagepath%>zas/ZAS.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyDir %>')"> <img src="<%=imagepath%>servlet/zoomifyservlet.ZoomifyServlet?file=/ZoomImages/zoomify/<%=catdir%>/<%=image%>" width="60"> </a> <font
 			FACE="sans-serif" size="-1" color="Red"><%=image%></font>
 	</td>
 	<%}
