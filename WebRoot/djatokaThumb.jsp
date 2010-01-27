@@ -39,7 +39,8 @@
 		}
 		else
 		{
-		    viewerLink = "javascript:showWindow('" +"viewer.jsp?rft_id=" + imageUrl + "');";
+		    viewerLink = "javascript:showWindow('" + adoreUrl + "/viewer.html?rft_id=" + imageUrl + "');";
+		    //viewerLink = "javascript:showWindow('viewer.jsp?rft_id=" + imageUrl + "');";
 		    thumbRequest = adoreUrl + "/resolver?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_val_fmt=info:ofi/fmt:kev:mtx:jpeg2000&svc.scale=100&rft_id=" + imageUrl;
 			
 		}

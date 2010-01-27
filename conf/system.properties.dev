@@ -5,9 +5,10 @@ image_path=/usr/local/newLizardTech/External/Donator/Tissue/Diagnosis
 image_user=lizard
 image_passwd=ncicbliz
 djatoka_server=http://ncias-d330-v.nci.nih.gov:19080/adore-djatoka
-djatoka_image_base=file:////
-djatoka_image_path=djatoka
-zoomify=http://zoomifyimg-dev.nci.nih.gov/zoomify/
+djatoka_image_base=http://ncias-d330-v.nci.nih.gov:19080/adore-djatoka
+djatoka_image_path=images/caimage
+zoomify_dir=http://zoomifyimg-dev.nci.nih.gov/zoomify/
+zoomify_host=zoomifyimg-dev.nci.nih.gov
 # Properties for the convertor
 conv_folder=/encode/enc6
 conv_error=/encode/enc6/Error

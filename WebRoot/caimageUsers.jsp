@@ -204,7 +204,7 @@
 										|| image_type.equals(".pff")) {//This is not sid 
 									System.err.println("I am in not in sid loop");
 									String zoomifyDir = sysProps
-											.getProperty("zoomify");
+											.getProperty("zoomify_dir");
 									imagepath = zoomifyDir;
 
 									%>

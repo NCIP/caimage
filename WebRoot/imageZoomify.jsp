@@ -26,7 +26,9 @@
 				String userDir = System.getProperty("user.dir");
 				String zoomifyDir = null;
 				String imageDir = null;
-				zoomifyDir = sysProps.getProperty("zoomify");
+				String zoomifyHost = null;
+				zoomifyDir = sysProps.getProperty("zoomify_dir");
+				zoomifyHost = sysProps.getProperty("zoomify_host");
 				String imagepath = zoomifyDir;
 				try {
 
@@ -39,10 +41,10 @@
 		<%String strid = null;
 
 						%>
-		<a href="javascript:showWindow('<%=imagepath%>ZoomPages/zoomifyDynamic.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyDir %>')"> <font FACE="sans-serif" size="-4">Simple Viewer</font> </a> <a
-			href="javascript:showWindow('<%=imagepath%>ZoomPages/zoomifyDynamic.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyDir %>')"> <img src="<%=imagepath%>servlet/zoomifyservlet.ZoomifyServlet?file=/ZoomImages/zoomify/<%=catdir%>/<%=image%>" width="60">
-		</a> <a href="javascript:showWindow('<%=imagepath%>zas/ZAS.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyDir %>')"> <font FACE="sans-serif" size="-4">Advanced Viewer</font> </a> <a
-			href="javascript:showWindow('<%=imagepath%>zas/ZAS.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyDir %>')"> <img src="<%=imagepath%>servlet/zoomifyservlet.ZoomifyServlet?file=/ZoomImages/zoomify/<%=catdir%>/<%=image%>" width="60"> </a> <font
+		<a href="javascript:showWindow('<%=imagepath%>ZoomPages/zoomifyDynamic.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyHost %>')"> <font FACE="sans-serif" size="-4">Simple Viewer</font> </a> <a
+			href="javascript:showWindow('<%=imagepath%>ZoomPages/zoomifyDynamic.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyHost %>')"> <img src="<%=imagepath%>servlet/zoomifyservlet.ZoomifyServlet?file=/ZoomImages/zoomify/<%=catdir%>/<%=image%>" width="60">
+		</a> <a href="javascript:showWindow('<%=imagepath%>ZoomPages/ZAS.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyHost %>')"> <font FACE="sans-serif" size="-4">Advanced Viewer</font> </a> <a
+			href="javascript:showWindow('<%=imagepath%>ZoomPages/ZAS.jsp?catalog=<%=catdir%>&img=<%=image%>&x=0.0&y=0.0&zoom=-1&host=<%=zoomifyHost %>')"> <img src="<%=imagepath%>servlet/zoomifyservlet.ZoomifyServlet?file=/ZoomImages/zoomify/<%=catdir%>/<%=image%>" width="60"> </a> <font
 			FACE="sans-serif" size="-1" color="Red"><%=image%></font>
 	</td>
 	<%}

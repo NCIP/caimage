@@ -507,8 +507,7 @@ function showWindow(imgscr){
 						image_type = image_trim.substring(annotationimagename,
 								Annot.getImage_name().length() - 1);
 					
-						if (image_type.equals(".ti")
-								|| image_type.equals("tif")) {
+						if (image_trim.indexOf(".pff") < 0) {
 							logger.debug("I am in sid loop");%>
 		<%-- <%@ include file="imageCharacterstic.jsp"%> --%>
 		<%@ include file="djatokaThumb.jsp"%>

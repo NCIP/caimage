@@ -32,7 +32,7 @@
  				 String imageDir = null;
 
 				
-				zoomifyDir = sysProps.getProperty("zoomify");
+				zoomifyDir = sysProps.getProperty("zoomify_dir");
 /*
 		 		if(userDir.indexOf(":")!= -1){ //if a windows system
 		 			zoomifyDir = getServletConfig().getServletContext().getInitParameter ("zoomify_Window");

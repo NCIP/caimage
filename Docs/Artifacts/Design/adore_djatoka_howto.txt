@@ -7,6 +7,20 @@ ADORE-DJATOKA WIKI:
 http://sourceforge.net/apps/mediawiki/djatoka/index.php?title=Main_Page
 
 #######################################################################
+CAIMAGE/ADORE-DJATOKA PROPERTY VALUES
+#######################################################################
+
+Tier-specific values for the properties listed in subsequent sections:
+
+DEV:
+ADORE_URL : http://ncias-d330-v.nci.nih.gov:19080/adore-djatoka
+CAIMAGE_URL : http://ncias-d331-v.nci.nih.gov:19080/caIMAGE
+IMAGE_HOME : http://ncias-d330-v.nci.nih.gov:19080/adore-djatoka/images/caimage
+CAIMAGE_REPO : https://ncisvn.nci.nih.gov/svn/caimage/trunk/
+FTP_SERVER : lpgftp.nci.nih.gov
+FTP_USER : lizardftp
+
+#######################################################################
 RETRIEVING IMAGES FROM ADORE-DJATOKA
 #######################################################################
 
@@ -18,8 +32,8 @@ Individual images, such as thumbnails, can be retrieved from the adore-djatoka w
 containing information about the image to be viewed and the desired image format. So, to retrieve a thumbnail of
 an image stored on the caIMAGE server, assume the following properties:
 
-ADORE_URL : URL of the adore-djatoka web application, e.g. http://cancerimages.nci.nih.gov/adore-djatoka
-IMAGE_URL : URL of the image to be viewed, e.g. http://cancerimages.nci.nih.gov/adore-djatoka/images/caimage/Images/images/Lymphoma_Images/L100.tif
+ADORE_URL : URL of the adore-djatoka web application, e.g. http://ncias-d330-v.nci.nih.gov/adore-djatoka
+IMAGE_URL : URL of the image to be viewed, e.g. http://ncias-d330-v.nci.nih.gov/adore-djatoka/images/caimage/Images/images/Lymphoma_Images/L100.tif
 IMAGE_WIDTH : Desired width in pixels of the thumbnail to be retrieved, e.g. 100
 
 A request for the thumbnail would look like:
@@ -29,21 +43,21 @@ $ADORE_URL/resolver?url_ver=Z39.88-2004&svc_id=info:lanl-repo/svc/getRegion&svc_
 Refer to the link above for an explanation of the URL parameters.
 
 #######################################################################
-VIEWING IMAGES WITH THE CAIMAGE/ADORE-DJATOKA IMAGE VIEWER
+VIEWING IMAGES WITH THE ADORE-DJATOKA IMAGE VIEWER
 #######################################################################
 
-The caIMAGE web application will contain a page that can be used to view detailed TIFF images.
-To view an image using the adore-djatoka javascript-based image viewer deployed with caIMAGE, assume the following properties:
+The adore-djatoka web application will contain a page that can be used to view detailed TIFF images.
+To view an image using the adore-djatoka javascript-based image viewer, assume the following properties:
 
-CAIMAGE_URL : e.g. http://cancerimages.nci.nih.gov
-IMAGE_URL : URL of the image to be viewed, e.g. http://cancerimages.nci.nih.gov/adore-djatoka/images/caimage/Images/images/Lymphoma_Images/L100.tif
+ADORE_URL : URL of the adore-djatoka web application, e.g. http://ncias-d331-v.nci.nih.gov/adore-djatoka
+IMAGE_URL : URL of the image to be viewed, e.g. http://ncias-d330-v.nci.nih.gov/adore-djatoka/images/caimage/Images/images/Lymphoma_Images/L100.tif
 
 A link to the viewer would look like:
 
-$CAIMAGE_URL/viewer.html?rft_id=$IMAGE_URL
+$ADORE_URL/viewer.html?rft_id=$IMAGE_URL
 
 #######################################################################
-MAPPING CAIMAGE IMAGE CATEGORIES TO IMAGE DIRECTORIES
+CONSTRUCTING IMAGE URLS
 #######################################################################
 
 In the caIMAGE database, individual images are mapped to a CATEGORY_NAME and CATEGORY_ID. When viewing SID images via
@@ -56,7 +70,7 @@ $CAIMAGE_REPO/conf/CatalogMap.csv
 The ultimate location of the converted images has not yet been determined, but assuming a base URL or directory is known,
 the mapping file can be used to determine an image URL. For example, assume we have a base URL for images:
 
-IMAGE_HOME : e.g. http://cancerimages.nci.nih.gov/adore-djatoka/images/caimage
+IMAGE_HOME : e.g. http://ncias-d330-v.nci.nih.gov/adore-djatoka/images/caimage
 
 and the mapping file contains the following mapping:
 
@@ -70,6 +84,22 @@ L100.tif    |  lymphoma
 
 we can determine the image URL:
 
-http://cancerimages.nci.nih.gov/adore-djatoka/images/caimage/Images/images/Lymphoma_Images/L100.tif
+http://ncias-d330-v.nci.nih.gov/adore-djatoka/images/caimage/Images/images/Lymphoma_Images/L100.tif
+
+##########################################################################
+ADORE-DJATOKA FTP
+##########################################################################
+
+The same FTP server, account, and password previously used to submit images
+to LizardTech can now be used to submit images to adore-djatoka. The image directory
+structure is the same as it was for LizardTech except that the base directory is
+now /djatoka. So, if images were previously submitted to the following directory:
+
+Images/images/Model_Images/Model/
+
+they should now be submitted to:
+
+djatoka/Images/images/Model_Images/Model/
+
 
 

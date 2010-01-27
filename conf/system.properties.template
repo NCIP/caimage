@@ -16,7 +16,8 @@ convusername=lizupload
 convpwd=ncicblts
 converrorpath=CONVERROR
 #zoomify=http://zoomifyimg-dev.nci.nih.gov/zoomify/
-zoomify=ZOOMIFY
+zoomify_dir=ZOOMIFY_DIR
+zoomify_host=ZOOMIFY_HOST
 qaserver=CACORESERVER
 
 # FTP Properties

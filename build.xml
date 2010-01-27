@@ -104,7 +104,8 @@
 			<replaceregexp file = "${system.properties.generated}" match="DJATOKA_SERVER" replace="${djatoka_server}" flags="g"/>
 			<replaceregexp file = "${system.properties.generated}" match="DJATOKA_IMAGE_BASE" replace="${djatoka_image_base}" flags="g"/>
 			<replaceregexp file = "${system.properties.generated}" match="DJATOKA_IMAGE_PATH" replace="${djatoka_image_path}" flags="g"/>
-			<replaceregexp file = "${system.properties.generated}" match="ZOOMIFY" replace="${zoomify}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="ZOOMIFY_DIR" replace="${zoomify_dir}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="ZOOMIFY_HOST" replace="${zoomify_host}" flags="g"/>
 	</target>
 				
 	<!-- Run all test cases -->
