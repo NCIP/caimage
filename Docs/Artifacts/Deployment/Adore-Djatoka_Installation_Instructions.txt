@@ -14,7 +14,7 @@ Adore-Djatoka software download:  http://sourceforge.net/projects/djatoka/files/
 
 ############  Installation and Deployment #########
 
-To install adore-djatoka and deploy to JBoss:
+To install adore-djatoka and deploy to JBoss for integration with caIMAGE:
 
 1) Download the software from the above location and extract the files.
 2) Ensure the following environment variables are set:
@@ -34,8 +34,24 @@ To install adore-djatoka and deploy to JBoss:
 5) Deploy to JBoss:
    In the $DJATOKA_HOME/dist directory is the adore-djatoka.war file. Explode the .war file
    and name the exploded directory adore-djatoka.war, and copy the directory to the JBoss
-   deployment directory
-
-
+   deployment directory  
+6) In the caimage repository are additional files to be copied to the adore-djatoka deployment.
+   Check out the files from the following location:
+   https://ncisvn.nci.nih.gov/svn/caimage/trunk/djatoka
+   Copy the file viewer.html to the following location:
+   $JBOSS_HOME/deploy/adore-djatoka.war/
+   Unzip adore-djatoka-javascript.zip and copy the files in the javascript folder to this location:
+   $JBOSS_HOME/deploy/adore-djatoka.war/javascript
+   Unzip adore-djatoka-images.zip and copy the files in the images folder to this location:
+   $JBOSS_HOME/deploy/adore-djatoka.war/images
+   Unzip adore-djatoka-css.zip, create the following directory and copy the files in the css folder to the directory:
+   $JBOSS_HOME/deploy/adore-djatoka.war/css
+7) Ensure the image volumes are mounted on the adore-djatoka server, /djatoka and /images-new
+8) Create the following symlink:
+   $JBOSS_HOME/deploy/adore-djatoka.war/images  -->  /images-new
+9) Enable symlinks on the djatoka server. Edit the following jboss configuration file:
+   $JBOSS_HOME/deploy/jbossweb-tomcat55.sar/context.xml
+   by adding the following attribute to the <Context> element:
+   allowLinking="true"
 
 vaughng, 12-11-2009
