@@ -1,0 +1,22 @@
+
+Information on Zoomify software installation and deployment for integration with caIMAGE.
+
+############  Installation and Deployment #########
+
+To install Zoomify and deploy to Tomcat for integration with caIMAGE:
+
+1) Follow the instructions for deploying Zoomify to Tomcat, as was done on ncias-d330-v.nci.nih.gov.
+2) Create the following directory:
+   $TOMCAT_HOME/webapps/zoomify/ZoomImages
+   Ensure the images volume has been mounted to the server, /images-new
+   In the above directory create the following symlink:
+   zoomify  -->  /images-new/zoomify
+3) In the caimage repository are additional files to be copied to the Zoomify deployment.
+   Check out the files from the following location:
+   https://ncisvn.nci.nih.gov/svn/caimage/trunk/zoomify
+   create the following directory and copy the files from the location above to the directory:
+   $TOMCAT_HOME/webapps/zoomify/ZoomPages
+4) Enable symlinks in the application. Edit the following file:
+   $TOMCAT_HOME/conf/context.xml
+   by adding the following attribute to the <Context> element:
+   allowLinking="true"
