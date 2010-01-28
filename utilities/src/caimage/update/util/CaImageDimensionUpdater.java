@@ -1,5 +1,13 @@
 package caimage.update.util;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +32,8 @@ public class CaImageDimensionUpdater
 {
     
     private static List<ImageComparisonResults> results = new ArrayList<ImageComparisonResults>();
-
+    private static final String CONVERSION_FILE = "Conversion_Success_Results.csv";
+    private static final String URL_BASE = "http://ncias-d330-v.nci.nih.gov:19080/adore-djatoka/images/caimage";
     /**
      * @param args
      */
@@ -32,7 +41,8 @@ public class CaImageDimensionUpdater
     {
         try {
         File file = new File(PropertyUtils.getProperty("image.basedir"));
-        getResults(file);
+        //getResults(file);
+        getRemoteResults();
         System.out.println("Number of comparison results: " + results.size());
         for (ImageComparisonResults result : results)
         {
@@ -94,6 +104,69 @@ public class CaImageDimensionUpdater
             else
             {
                 System.out.println("No db entry for: " + file.getName());
+            }
+        }
+    }
+    
+    private static void getRemoteResults() throws FileNotFoundException, IOException, URISyntaxException, SQLException, ClassNotFoundException
+    {
+        ImageConversionResults conversionResults = new ImageConversionResults(CONVERSION_FILE);
+        
+        for (ImageConversionResults.ConversionMapping mapping : conversionResults.getConversionMappings())
+        {
+            if (mapping.getCatalogId() != 0 && mapping.getNewExt().equals(".tif"))
+            {
+                String originalName = mapping.getOriginalFileName();
+                String ext = mapping.getNewExt();
+                String newName;
+                if (originalName.indexOf(".") >= 0)
+                {
+                    newName = originalName.substring(0,originalName.indexOf(".")) + ext;
+                }
+                else
+                {
+                    newName = originalName + ext;
+                }
+                CatalogMap catalogMap = new CatalogMap();
+                String dir = catalogMap.getCatalog(mapping.getCatalogId());
+                if (dir == null)
+                    return;
+                
+                String remoteName = URL_BASE + "/" + dir + "/" + newName;
+                //URI remote = new URI(remoteName);
+                //File file = new File(remote);
+             // Create an URL instance
+                URL url = new URL(remoteName);
+
+                // Get an input stream for reading
+                InputStream in = url.openStream();
+
+                // Create a buffered input stream for efficency
+                BufferedInputStream bufIn = new BufferedInputStream(in);
+
+                int annoId = CaImageDBUtils.getAnnotationId(newName);
+                    if (annoId > -1)
+                    {
+                        int[] dim = CaImageDBUtils.getDimensions(annoId);
+                        if (dim != null)
+                        {
+                            int tifWidth = ImageUtils.getTifWidth(bufIn);
+                            int tifHeight = ImageUtils.getTifLength(bufIn);
+                            ImageComparisonResults result = new ImageComparisonResults();
+                            result.dbWidth = dim[0];
+                            result.dbHeight = dim[1];
+                            result.tifWidth = tifWidth;
+                            result.tifHeight = tifHeight;
+                            result.name = newName;
+                            result.annotationId = annoId;
+                            results.add(result);
+                        }
+                        else
+                        {
+                            System.out.println("No db dimensions for file: " + newName);
+                        }
+                    }
+            
             }
         }
     }

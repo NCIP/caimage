@@ -84,6 +84,17 @@ public class CatalogMap
         }
         return id;
     }
+    
+    public String getCatalog(int id)
+    {
+        System.out.println("Checking catalog name for id: " + id);
+        if (idMap.containsKey(id))
+        {
+            return idMap.get(id).directory;
+        }
+        return null;
+    }
+    
     /**
      * Returns the result of replacing any null values in the given array with
      * the empty string.
