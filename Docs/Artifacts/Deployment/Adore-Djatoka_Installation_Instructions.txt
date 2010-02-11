@@ -53,5 +53,17 @@ To install adore-djatoka and deploy to JBoss for integration with caIMAGE:
    $JBOSS_HOME/deploy/jbossweb-tomcat55.sar/context.xml
    by adding the following attribute to the <Context> element:
    allowLinking="true"
+10) Create the following directory:
+	/local/content/djatoka/tmp
+11) Edit the local cache properties in the djatoka configuration file:
+	$JBOSS_HOME/adore-djatoka.war/WEB-INF/classes/djatoka.properties
+	
+	Set the following properties:
+	OpenURLJP2KService.cacheTmpDir=/local/content/djatoka/tmp
+	OpenURLJP2KService.cacheSize=20
+	
+	Add the following properties:
+	SimpleListResolver.maxRemoteCacheSize=20
+	DatabaseResolver.maxRemoteCacheSize=20
 
 vaughng, 12-11-2009
