@@ -21,13 +21,20 @@ To install adore-djatoka and deploy to JBoss for integration with caIMAGE:
    JAVA_HOME = JDK 1.5 installation location
    DJATOKA_HOME  = Djatoka installation (e.g. usr/adore-djatoka-1.1)
    KAKADU_HOME   = Location of the extraction and compression binaries included with the djatoka
-		   installation (e.g. $DJATOKA_HOME/bin/Linux-x86-32)
-   Additionally, add $KAKADU_HOME to the system PATH
-3) Add the following lines to the JBoss configuration file to establish environment settings for djatoka:
-   CWD=`pwd`
-   cd $DJATOKA_HOME/bin
-   . $DJATOKA_HOME/bin/env.sh
-   cd $CWD
+		   installation (e.g. $DJATOKA_HOME/bin/Linux-x86-64)
+   LIBPATH=$DJATOKA_HOME/lib
+   # Assume Linux AMD 64 has 64-bit Java
+    PLATFORM="Linux-x86-64"
+    LD_LIBRARY_PATH="$LIBPATH/$PLATFORM"
+    export LD_LIBRARY_PATH
+    KAKADU_LIBRARY_PATH="-DLD_LIBRARY_PATH=$LIBPATH/$PLATFORM"
+3) Add $KAKADU_HOME to the system PATH, and set the classpath as follows:
+   for line in `ls -1 $LIBPATH | grep '.jar'`
+   do
+      classpath="$classpath:$LIBPATH/$line"
+  done
+  cd $DJATOKA_HOME/bin
+  CLASSPATH=.:../build/:$classpath
 4) Append djatoka java options to the JBoss configuration file:
    In $JBOSS_HOME/bin/run.conf, find the JAVA_OPTS settings and append the following options:
 	-Djava.awt.headless=true -Dkakadu.home=$KAKADU_HOME -Djava.library.path=$KAKADU_HOME
@@ -46,7 +53,7 @@ To install adore-djatoka and deploy to JBoss for integration with caIMAGE:
    $JBOSS_HOME/deploy/adore-djatoka.war/images
    Unzip adore-djatoka-css.zip, create the following directory and copy the files in the css folder to the directory:
    $JBOSS_HOME/deploy/adore-djatoka.war/css
-7) Ensure the image volumes are mounted on the adore-djatoka server, /djatoka and /images-new
+7) Ensure the image volume is mounted on the adore-djatoka server, /images-new
 8) Create the following symlink:
    $JBOSS_HOME/deploy/adore-djatoka.war/images  -->  /images-new
 9) Enable symlinks on the djatoka server. Edit the following jboss configuration file:
