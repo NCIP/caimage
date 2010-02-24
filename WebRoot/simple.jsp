@@ -106,12 +106,7 @@ conceptCode = document.main.diagnosisCode.name;
 </td>
 </tr> --->
 
-			<TD class="bodytxbold">
-				Database:
-			</TD>
-			<TD align="left" class="bodytxbold">
-				<%=DatabaseSelection.setSelected()%>
-			</TD>
+			
 
 			<tr ALIGN=left VALIGN=TOP>
 				<td class="bodytxbold">
