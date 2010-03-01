@@ -1,14 +1,24 @@
+#Legacy image server properties, retained to prevent unforseen side effects
 liz_httpserver=http://lpgdev101.nci.nih.gov/lizardtech
 liz_httpstyle=http://lpgdev101.nci.nih.gov:9001/StyleServer
 liz_server=lpgdev101.nci.nih.gov
 image_path=/usr/local/newLizardTech/External/Donator/Tissue/Diagnosis
 image_user=lizard
 image_passwd=ncicbliz
-djatoka_server=http://ncias-d330-v.nci.nih.gov:19080/adore-djatoka
-djatoka_image_base=http://ncias-d330-v.nci.nih.gov:19080/adore-djatoka
+
+#Upgraded image server properties, adore-djatoka & zoomify
+#############################################################
+#adore-djatoka web application URL
+djatoka_server=http://imageserver-stage.nci.nih.gov/adore-djatoka
+#Base URL of the location of caImage images
+djatoka_image_base=http://imageserver-stage.nci.nih.gov/adore-djatoka
+#Path appended to the image_base to access caImage images
 djatoka_image_path=images/caimage
-zoomify_dir=http://zoomifyimg-stage.nci.nih.gov/zoomify/
-zoomify_host=zoomifyimg-stage.nci.nih.gov
+#Zoomify web application URL
+zoomify_dir=http://imageserver-stage.nci.nih.gov/zoomify/
+#Zoomify web application URL
+zoomify_host=imageserver-stage.nci.nih.gov
+
 # Properties for the convertor
 conv_folder=/encode/enc6
 conv_error=/encode/enc6/Error
