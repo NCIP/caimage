@@ -54,9 +54,9 @@ function showWindow(imgscr){
 			}
 			try {
 
-				//String qa = sysProps.getProperty("qaserver");
+				String qa = sysProps.getProperty("qaserver");
 
-				//appService = ApplicationService.getRemoteInstance(qa);
+				appService = ApplicationService.getRemoteInstance(qa);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
