@@ -17,13 +17,21 @@
 <%@ page import="java.net.URLDecoder"%>
 <%@ page import="java.net.URLEncoder"%>
 <%//@ page errorPage = "Error.jsp " %>
-<%@ page import="gov.nih.nci.evs.query.*"%>
-<%@ page import="gov.nih.nci.evs.domain.*"%>
-<%@ page import="gov.nih.nci.system.applicationservice.*"%>
+<%//@ page import="gov.nih.nci.evs.query.*"%>
+<%//@ page import="gov.nih.nci.evs.domain.*"%>
+<%//@ page import="gov.nih.nci.system.applicationservice.*"%>
 <%@ page import="javax.swing.tree.*"%>
-<%@ page import="gov.nih.nci.evs.domain.DescLogicConcept"%>
-<%@ page import="gov.nih.nci.common.net.*"%>
+<%//@ page import="gov.nih.nci.evs.domain.DescLogicConcept"%>
+<%//@ page import="gov.nih.nci.common.net.*"%>
 <%@ page import="org.apache.log4j.Logger"%>
+<%@ page import="gov.nih.nci.system.client.ApplicationServiceProvider"%>
+<%@ page import="org.LexGrid.LexBIG.LexBIGService.*"%>
+<%@ page import="org.LexGrid.LexBIG.caCore.interfaces.LexEVSApplicationService"%>
+<%@ page import="org.LexGrid.LexBIG.caCore.interfaces.LexEVSDistributed"%>
+<%@ page import="org.LexGrid.LexBIG.caCore.interfaces.LexEVSService"%>
+<%@ page import="gov.nih.nci.evs.security.SecurityToken"%>
+<%@ page import="gov.nih.nci.system.applicationservice.ApplicationService"%>
+
 
 <%			Logger logger = Logger.getLogger(simpleandfile.class);
 			logger.debug("****Simple results.jsp*********");	%>
@@ -40,7 +48,8 @@ function showWindow(imgscr){
 <FORM method="POST">
 
 	<%
-			ApplicationService appService = null;
+			//ApplicationService appService = null;
+			LexBIGService appService = null;
 
 			InputStream in = null;
 			Properties sysProps = new Properties();
@@ -56,7 +65,9 @@ function showWindow(imgscr){
 
 				String qa = sysProps.getProperty("qaserver");
 
-				appService = ApplicationService.getRemoteInstance(qa);
+				//appService = ApplicationService.getRemoteInstance(qa);
+				appService = (LexBIGService)ApplicationServiceProvider.getApplicationServiceFromUrl(qa, "EvsServiceInfo");
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -75,15 +86,42 @@ function showWindow(imgscr){
 
 			
 			species = request.getParameter("species").trim();
+			if (species != null && !species.equals("")) {
+				species = SafeHTMLUtil.clean(species);
+				List speciesList = new ArrayList();
+				speciesList = (List) request.getSession().getAttribute(Constants.Dropdowns.SPECIESQUERYDROP);
+				request.getSession().setAttribute(Constants.Dropdowns.SEARCHSPECIESDROP, speciesList);
+				if (!SafeHTMLUtil.isValidStringValue(species, Constants.Dropdowns.SEARCHSPECIESDROP, request))
+				{ 
+					System.err.println("SPECIES.error.validValue:" + species);
+					throw new IOException("invalid species:" + species);
+				} 
+			}
+			
+			
 			tname = request.getParameter("organTissueName").trim();
 
 			tname = URLDecoder.decode(tname).trim();
+			if (tname != null && !tname.equals("")) {
+				tname = SafeHTMLUtil.clean(tname);
+			}
+			
 
 			organ = request.getParameter("organTissueCode").trim();
+			if (organ != null && !organ.equals("")) {
+				organ = SafeHTMLUtil.clean(organ);
+			}
 			dignosis = request.getParameter("diagnosisCode").trim();
+			if (dignosis != null && !dignosis.equals("")) {
+				dignosis = SafeHTMLUtil.clean(dignosis);
+			}
+			
 			dignosisName = request.getParameter("diagnosisName").trim();
 			dignosisName = URLDecoder.decode(dignosisName).trim();
-
+			if (dignosisName != null && !dignosisName.equals("")) {
+				dignosisName = SafeHTMLUtil.clean(dignosisName);
+			}
+			
 			//constructors classes
 			Species sp = new Species();
 			Stain st = new Stain();
