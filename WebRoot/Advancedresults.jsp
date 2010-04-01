@@ -14,13 +14,15 @@
 <%@ page import="java.net.URLDecoder"%>
 <%@ page import="java.net.URLEncoder"%>
 <%//@ page errorPage = "Error.jsp " %>
-<%@ page import="gov.nih.nci.evs.query.*"%>
-<%@ page import="gov.nih.nci.evs.domain.*"%>
-<%@ page import="gov.nih.nci.system.applicationservice.*"%>
+<%//@ page import="gov.nih.nci.evs.query.*"%>
+<%//@ page import="gov.nih.nci.evs.domain.*"%>
+<%//@ page import="gov.nih.nci.system.applicationservice.*"%>
 <%@ page import="javax.swing.tree.*"%>
-<%@ page import="gov.nih.nci.evs.domain.DescLogicConcept"%>
-<%@ page import="gov.nih.nci.common.net.*"%>
+<%//@ page import="gov.nih.nci.evs.domain.DescLogicConcept"%>
+<%//@ page import="gov.nih.nci.common.net.*"%>
 <%@ page import="org.apache.log4j.Logger"%>
+<%@ page import="gov.nih.nci.system.client.ApplicationServiceProvider"%>
+<%@ page import="org.LexGrid.LexBIG.LexBIGService.*"%>
 
 <link rel="stylesheet" href="caIMAGE.css" type="text/css">
 
@@ -36,7 +38,8 @@ function showWindow(imgscr){
 <FORM method="POST">
 	<%@ include file="html/search_results_adv_top.htm"%>
 	<%Logger logger = Logger.getLogger(simpleandfile.class);
-			ApplicationService appService = null;
+			//ApplicationService appService = null;
+			LexBIGService appService = null;
 			Calendar rightNow = Calendar.getInstance();
 
 			InputStream in = null;
@@ -53,7 +56,8 @@ function showWindow(imgscr){
 
 				  String qa = sysProps.getProperty("qaserver");  
 
-				  appService = ApplicationService.getRemoteInstance(qa);    
+				  //appService = ApplicationService.getRemoteInstance(qa);
+				  appService = (LexBIGService)ApplicationServiceProvider.getApplicationServiceFromUrl(qa, "EvsServiceInfo");    
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -77,25 +81,111 @@ function showWindow(imgscr){
 			int a = 0;
 
 			species = request.getParameter("species").trim();
+			if (species != null && !species.equals("")) {
+				species = SafeHTMLUtil.clean(species);
+				List speciesList = new ArrayList();
+				speciesList = (List) request.getSession().getAttribute(Constants.Dropdowns.SPECIESQUERYDROP);
+				request.getSession().setAttribute(Constants.Dropdowns.SEARCHSPECIESDROP, speciesList);
+				if (!SafeHTMLUtil.isValidStringValue(species, Constants.Dropdowns.SEARCHSPECIESDROP, request))
+				{ 
+					System.err.println("SPECIES.error.validValue:" + species);
+					throw new IOException("invalid species:" + species);
+				} 
+			}
+			
 
 			tname = request.getParameter("organTissueName").trim();
 			tname = URLDecoder.decode(tname).trim();
+			if (tname != null && !tname.equals("")) {
+				tname = SafeHTMLUtil.clean(tname);
+			}
 			organ = request.getParameter("organTissueCode").trim();
+			if (organ != null && !organ.equals("")) {
+				organ = SafeHTMLUtil.clean(organ);
+			}
 			dignosis = request.getParameter("diagnosisCode").trim();
+			if (dignosis != null && !dignosis.equals("")) {
+				dignosis = SafeHTMLUtil.clean(dignosis);
+			}
+			
 			dignosisName = request.getParameter("diagnosisName").trim();
 			dignosisName = URLDecoder.decode(dignosisName).trim();
+			if (dignosisName != null && !dignosisName.equals("")) {
+				dignosisName = SafeHTMLUtil.clean(dignosisName);
+			}
 			imagename = request.getParameter("imagename").trim();
+			if (imagename != null && !imagename.equals("")) {
+				imagename = SafeHTMLUtil.clean(imagename);
+			}
+			
 			donator = request.getParameter("donator").trim();
 			donator = URLDecoder.decode(donator).trim();
+			if (donator != null && !donator.equals("")) {
+				donator = SafeHTMLUtil.clean(donator);
+				List donatorList = new ArrayList();
+				donatorList = (List) request.getSession().getAttribute(Constants.Dropdowns.PRINCIPALINVESTIGATORDROP);
+				request.getSession().setAttribute(Constants.Dropdowns.SEARCHPIDROP, donatorList); 
+				if (!SafeHTMLUtil.isValidValue(donator, Constants.Dropdowns.SEARCHPIDROP, request))
+				{ 
+					System.err.println("error.donator.validValue:" + donator);
+					throw new IOException("invalid donator:" + donator);
+				} 
+			}
 			donator_Institution = request.getParameter("donator_Institution")
 					.trim();
 			donator_Institution = URLDecoder.decode(donator_Institution).trim();
+			if (donator_Institution != null && !donator_Institution.equals("")) {
+				donator_Institution = SafeHTMLUtil.cleanWithSlash(donator_Institution);
+				List institutionList = new ArrayList();
+				institutionList = (List) request.getSession().getAttribute(Constants.Dropdowns.INSTITUTIONQUERYDROP);
+				request.getSession().setAttribute(Constants.Dropdowns.SEARCHINSTITUTIONDROP, institutionList); 
+				if (!SafeHTMLUtil.isValidValue(donator_Institution, Constants.Dropdowns.SEARCHINSTITUTIONDROP, request))
+				{ 
+					System.err.println("error.institution.validValue:" + donator_Institution);
+					throw new IOException("invalid Institution:" + donator_Institution);
+				} 
+			}
 			stain = request.getParameter("stain").trim();
 			stain = URLDecoder.decode(stain).trim();
+			if (stain != null && !stain.equals("")) {
+				stain = SafeHTMLUtil.clean(stain);   // stain should contain numeric value
+				List stainList = new ArrayList();
+				stainList = (List) request.getSession().getAttribute(Constants.Dropdowns.STAININGDROP);
+				request.getSession().setAttribute(Constants.Dropdowns.SEARCHSTAININGDROP, stainList); 
+				if (!SafeHTMLUtil.isValidValue(stain, Constants.Dropdowns.SEARCHSTAININGDROP, request))
+				{ 
+					System.err.println("error.stain.validValue:" + stain);
+					throw new IOException("invalid stain:" + stain);
+				} 
+			}
 			strain = request.getParameter("strain").trim();
 			strain = URLDecoder.decode(strain).trim();
+			if (strain != null && !strain.equals("")) {
+				strain = SafeHTMLUtil.clean(strain);   // strain should be numeric value
+				List strainList = new ArrayList();
+				strainList = (List) request.getSession().getAttribute(Constants.Dropdowns.STRAINDROP);
+				request.getSession().setAttribute(Constants.Dropdowns.SEARCHSTRAINDROP, strainList);
+				if (!SafeHTMLUtil.isValidValue(strain, Constants.Dropdowns.SEARCHSTRAINDROP, request))
+				{ 
+					System.err.println("error.strain.validValue:" + strain);
+					throw new IOException("invalid strain:" + strain);
+				} 
+			}
+				
+				
 			gender = request.getParameter("gender").trim();
 			gender = URLDecoder.decode(gender).trim();
+			if (gender != null && !gender.equals("")){
+				gender = SafeHTMLUtil.clean(gender);
+				List genderList = new ArrayList();
+				genderList = (List) request.getSession().getAttribute(Constants.Dropdowns.GENDERQUERYDROP);
+				request.getSession().setAttribute(Constants.Dropdowns.SEARCHGENDERDROP, genderList);
+				if (!SafeHTMLUtil.isValidValue(gender, Constants.Dropdowns.SEARCHGENDERDROP, request))
+				{ 
+					System.err.println("error.gender.validValue:" + gender);
+					throw new IOException("invalid gender:" + gender);
+				} 
+			}
 		
 			// constructor class
 			Species sp = new Species();
