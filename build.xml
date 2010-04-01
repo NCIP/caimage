@@ -68,6 +68,8 @@
 				<include name="db.properties"/>
 				<include name="system.properties"/>
 				<include name="log4j.properties"/>
+				<include name="application-config-client.xml"/>
+				<include name="application-config-client-info.xml"/>
 			</fileset>
 			<fileset dir="${src.java.dir}" includes="**/*.csv,**/*.properties"/>
 		</copy>
