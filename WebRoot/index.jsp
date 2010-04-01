@@ -1,4 +1,4 @@
-
+<%@ page import="gov.nih.nci.caIMAGE.util.*"%>
 <%//reset all sessions
 			//session.invalidate();
 
@@ -23,6 +23,7 @@
 <%//@ include file="maintenance.html"%>
 <%} else {
 				request.getSession(true);				%>
+<% NewDropdownUtil.setup(request); %>				
 <%if (request.getParameter("mmhcc") != null) {%>
 <%@ include file="html/caIMAGEMembersDisclaimer.html"%>
 <%} else {%>
