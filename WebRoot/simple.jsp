@@ -66,8 +66,9 @@ conceptCode = document.main.diagnosisCode.name;
 	  	showDiagnosisTree(form, conceptCode, conceptName, displayName, leafNode, organvalue)
 	  	} 
  	}else if ((speciesValue== "human") || (speciesValue == "Human")) {
- 	organvalue = 'HumanDiagnosis';
- 	showHumanDiagnosisTree(form, conceptCode, conceptName, displayName, leafNode, organvalue)
+ 	//organvalue = 'HumanDiagnosis';
+ 	//showHumanDiagnosisTree(form, conceptCode, conceptName, displayName, leafNode, organvalue)
+	alert('The vocabulary is currently unavailable.');
 	} 
 	else {
 	alert('No Diagnosis Tree available for ' + speciesValue );
