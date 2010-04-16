@@ -16,7 +16,9 @@ Adore-Djatoka software download:  http://sourceforge.net/projects/djatoka/files/
 
 To install adore-djatoka and deploy to JBoss for integration with caIMAGE:
 
-1) Download the software from the above location and extract the files.
+1) Extract the adore-djatoka software files from the location:
+   https://ncisvn.nci.nih.gov/svn/caimage/trunk/djatoka/adore-djatoka-1.1.tar.gz
+
 2) Ensure the following environment variables are set:
    JAVA_HOME = JDK 1.5 installation location
    DJATOKA_HOME  = Djatoka installation (e.g. usr/adore-djatoka-1.1)
