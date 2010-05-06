@@ -15,7 +15,7 @@
 		    logger.error("Error retrieving directory map",e);
 		}
 		String imageDir;
-		if (map == null)
+		if (map == null || catalog == null)
 		{
 		    imageDir = "/unknown";
 		}
