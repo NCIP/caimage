@@ -100,7 +100,7 @@
 			
 					organname = Org.getOrgan();
 				
-					if (organname.equals("00000000")) {%>
+					if (organname == null || organname.equals("00000000")) {%>
 	<span class="bodytxbold">Organ:&nbsp;</span> <span class="bodytext">Unspecified&nbsp;</span>
 	<br>
 	<%} else if ((organname != null) && (organname.length() > 0)) {
