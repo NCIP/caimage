@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="caIMAGE" default="package-app" basedir=".">
+    <description>caIMAGE</description>
+
+	<property name="log.platform" value="unix"/>
+	<property name="src.java.dir" value="src"/>
+	<property name="conf.dir" value="conf"/>
+	<property name="lib.dir" value="WebRoot/WEB-INF/lib" />
+	<property name="lib.exclude" value="WebRoot/libExclude" />
+	<property name="output.dir" value="out/caIMAGE"/>
+	<property name="web.dir" value="${output.dir}/WEB-INF"/>
+	<property name="build.classes.dir" value="${output.dir}/WEB-INF/classes"/>
+	<property name="WebRoot.dir" value="WebRoot"/>
+	<property name="script.dir" value="script"/>
+	
+      <!-- Tier specific properties -->
+	<property file="${conf.dir}/system.properties.${tier}" />
+	<property file="${conf.dir}/build.properties.${tier}" />
+	
+	<target name="test_tier">
+		<echo message="${tier}"></echo>
+	</target>
+
+	<!-- This will delete all of the files created by the build process -->
+	<target name="clean">
+		<delete dir="${output.dir}" quiet="true"/>
+	</target>
+	
+	<!-- This sets up all of the neccessary directories -->
+	<target name="init-project" depends="clean">
+		<mkdir dir="output"/>
+		<mkdir dir="${output.dir}"/>
+		<mkdir dir="${web.dir}"/>
+		<mkdir dir="${build.classes.dir}"/>
+		<mkdir dir="${lib.dir}"/>
+	</target>
+	
+	<!-- This compiles all of the java file and puts the class files into the output directory -->
+	<target name="compile" depends="init-project">
+        <echo message="*****************************************************"/>
+        <echo message="**   Compiling Java Classes ...          		  **"/>
+        <echo message="*****************************************************"/>
+		<path id="cp">
+			<fileset dir="${lib.dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+			<fileset dir="${lib.exclude}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</path>
+  		<javac srcdir="${src.java.dir}" destdir="${build.classes.dir}">
+  			<classpath refid="cp"/>
+  			<!--
+			<classpath refid="persistence-classpath"/>
+  			-->
+	  	</javac>
+		
+	</target>
+	
+	<!-- This creates the WAR file -->
+	<target name="package-app" depends="compile, create-db.properties, create-system.properties ">
+		<copy todir="${output.dir}">
+			<fileset dir="WebRoot"/>
+		</copy>
+	
+		<copy todir="${build.classes.dir}">
+			<fileset dir="conf">
+				<include name="db.properties"/>
+				<include name="system.properties"/>
+				<include name="log4j.properties"/>
+				<include name="application-config-client.xml"/>
+				<include name="application-config-client-info.xml"/>
+			</fileset>
+			<fileset dir="${src.java.dir}" includes="**/*.csv,**/*.properties"/>
+		</copy>
+		<!-- Pack server file -->
+		<war destfile="${output.dir}/caIMAGE.war"
+			webxml="conf/web.xml"
+			basedir="${output.dir}"
+			excludes="*.war"/>
+	</target>
+	
+	<!-- This takes a template file containing the database settings and modifies it for the desired tier -->
+ 	<target name="create-db.properties">
+	    <property name="db.properties.generated" value="${conf.dir}/db.properties"/>
+		<delete file="${db.properties.generated}"/>
+		<copy file="${conf.dir}/db.properties.template" tofile="${db.properties.generated}"/>
+		<replaceregexp file = "${db.properties.generated}" match="DBSCHEMA" replace="${db_schema}" flags="g"/>
+		<replaceregexp file = "${db.properties.generated}" match="DBUSER" replace="${db_username}" flags="g"/>
+		<replaceregexp file = "${db.properties.generated}" match="DBPASSWD" replace="${db_password}" flags="g"/>
+	</target>
+	<!-- This takes a template file containing the system properties settings and modifies it for the desired tier -->
+	<target name="create-system.properties">
+		    <property name="system.properties.generated" value="${conf.dir}/system.properties"/>
+			<delete file="${system.properties.generated}"/>
+			<copy file="${conf.dir}/system.properties.template" tofile="${system.properties.generated}"/>
+			<replaceregexp file = "${system.properties.generated}" match="LIZHTTPSERVER" replace="${liz_httpserver}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="LIZHTTPSTYLE" replace="${liz_httpstyle}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="LIZSERVER" replace="${liz_server}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="IMAGEPATH" replace="${image_path}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="IMAGEUSER" replace="${image_user}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="IMAGEPASSWD" replace="${image_passwd}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="CONVFOLDER" replace="${conv_folder}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="CONVERROR" replace="${conv_error}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="CACORESERVER" replace="${cacore_server}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="DJATOKA_SERVER" replace="${djatoka_server}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="DJATOKA_IMAGE_BASE" replace="${djatoka_image_base}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="DJATOKA_IMAGE_PATH" replace="${djatoka_image_path}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="ZOOMIFY_DIR" replace="${zoomify_dir}" flags="g"/>
+			<replaceregexp file = "${system.properties.generated}" match="ZOOMIFY_HOST" replace="${zoomify_host}" flags="g"/>
+	</target>
+				
+	<!-- Run all test cases -->
+	<target name="test-all"
+		description="Executes all tests"
+		depends="">
+	</target>
+</project>

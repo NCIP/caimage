@@ -1,0 +1,27 @@
+caimage_script=/local/content/liztech/
+lizard=LIZHTTPSERVER
+lizard_Style=LIZHTTPSTYLE
+image_server=LIZSERVER
+image_server_path=IMAGEPATH
+image_server_user=IMAGEUSER
+image_server_passwd=IMAGEPASSWD
+djatoka_server=DJATOKA_SERVER
+djatoka_image_base=DJATOKA_IMAGE_BASE
+djatoka_image_path=DJATOKA_IMAGE_PATH
+
+# Properties for the convertor
+convurl=lpgftp.nci.nih.gov
+convpath=CONVFOLDER
+convusername=lizupload
+convpwd=ncicblts
+converrorpath=CONVERROR
+#zoomify=http://zoomifyimg-dev.nci.nih.gov/zoomify/
+zoomify_dir=ZOOMIFY_DIR
+zoomify_host=ZOOMIFY_HOST
+qaserver=CACORESERVER
+
+# FTP Properties
+ftpurl=lpgftp.nci.nih.gov
+ftppath=/Images
+ftpusername=lizupload
+ftppwd=ncicblts

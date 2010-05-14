@@ -1,0 +1,13 @@
+
+Instructions for manually submitting images to caIMAGE.
+
+1) Ensure the image file to be submitted is accessible from the image server on which the submission application will be run.
+2) Check out the files from the utilities directory in the caimage SVN repository:
+   https://ncisvn.nci.nih.gov/svn/caimage/trunk/utilites
+3) Edit the properties file caimage_update.properties to ensure the database user, password, and URL properties are correct
+   for the tier on which the images will be submitted:
+   db.usr, db.pwd, db.url
+4) Execute the following command:
+   java -jar caimage-submit.jar <filename>
+5) When prompted, enter the species and description information pertaining to the image.
+6) Note the location to which the image file should be copied, and copy the file to that location.

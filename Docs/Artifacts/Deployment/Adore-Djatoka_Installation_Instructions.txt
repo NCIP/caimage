@@ -1,0 +1,78 @@
+
+Information on Adore-Djatoka software installation and deployment.
+
+
+############  Web Sites ###########################
+
+
+Adore-Djatoka website:  http://sourceforge.net/apps/mediawiki/djatoka/index.php?title=Main_Page
+
+Adore-Djatoka software download:  http://sourceforge.net/projects/djatoka/files/
+
+
+
+
+############  Installation and Deployment #########
+
+To install adore-djatoka and deploy to JBoss for integration with caIMAGE:
+
+1) Extract the adore-djatoka software files from the location:
+   https://ncisvn.nci.nih.gov/svn/caimage/trunk/djatoka/adore-djatoka-1.1.tar.gz
+
+2) Ensure the following environment variables are set:
+   JAVA_HOME = JDK 1.5 installation location
+   DJATOKA_HOME  = Djatoka installation (e.g. usr/adore-djatoka-1.1)
+   KAKADU_HOME   = Location of the extraction and compression binaries included with the djatoka
+		   installation (e.g. $DJATOKA_HOME/bin/Linux-x86-64)
+   LIBPATH=$DJATOKA_HOME/lib
+   # Assume Linux AMD 64 has 64-bit Java
+    PLATFORM="Linux-x86-64"
+    LD_LIBRARY_PATH="$LIBPATH/$PLATFORM"
+    export LD_LIBRARY_PATH
+    KAKADU_LIBRARY_PATH="-DLD_LIBRARY_PATH=$LIBPATH/$PLATFORM"
+3) Add $KAKADU_HOME to the system PATH, and set the classpath as follows:
+   for line in `ls -1 $LIBPATH | grep '.jar'`
+   do
+      classpath="$classpath:$LIBPATH/$line"
+  done
+  cd $DJATOKA_HOME/bin
+  CLASSPATH=.:../build/:$classpath
+4) Append djatoka java options to the JBoss configuration file:
+   In $JBOSS_HOME/bin/run.conf, find the JAVA_OPTS settings and append the following options:
+	-Djava.awt.headless=true -Dkakadu.home=$KAKADU_HOME -Djava.library.path=$KAKADU_HOME
+5) Deploy to JBoss:
+   In the $DJATOKA_HOME/dist directory is the adore-djatoka.war file. Explode the .war file
+   and name the exploded directory adore-djatoka.war, and copy the directory to the JBoss
+   deployment directory  
+6) In the caimage repository are additional files to be copied to the adore-djatoka deployment.
+   Check out the files from the following location:
+   https://ncisvn.nci.nih.gov/svn/caimage/trunk/djatoka
+   Copy the file viewer.html to the following location:
+   $JBOSS_HOME/deploy/adore-djatoka.war/
+   Unzip adore-djatoka-javascript.zip and copy the files in the javascript folder to this location:
+   $JBOSS_HOME/deploy/adore-djatoka.war/javascript
+   Unzip adore-djatoka-images.zip and copy the files in the images folder to this location:
+   $JBOSS_HOME/deploy/adore-djatoka.war/images
+   Unzip adore-djatoka-css.zip, create the following directory and copy the files in the css folder to the directory:
+   $JBOSS_HOME/deploy/adore-djatoka.war/css
+7) Ensure the image volume is mounted on the adore-djatoka server, /images-new
+8) Create the following symlink:
+   $JBOSS_HOME/deploy/adore-djatoka.war/images  -->  /images-new
+9) Enable symlinks on the djatoka server. Edit the following jboss configuration file:
+   $JBOSS_HOME/deploy/jbossweb-tomcat55.sar/context.xml
+   by adding the following attribute to the <Context> element:
+   allowLinking="true"
+10) Create the following directory:
+	/local/content/djatoka/tmp
+11) Edit the local cache properties in the djatoka configuration file:
+	$JBOSS_HOME/adore-djatoka.war/WEB-INF/classes/djatoka.properties
+	
+	Set the following properties:
+	OpenURLJP2KService.cacheTmpDir=/local/content/djatoka/tmp
+	OpenURLJP2KService.cacheSize=20
+	
+	Add the following properties:
+	SimpleListResolver.maxRemoteCacheSize=20
+	DatabaseResolver.maxRemoteCacheSize=20
+
+vaughng, 12-11-2009

@@ -1,0 +1,174 @@
+<ZAS>
+	<POI>	
+		<LABELS>
+			<LABEL 
+				ID="0" 
+				NAME="First POI%27s first label" 
+				MEDIATYPE="symbol"
+				MEDIA="circle" 
+				X="1100" 
+				Y="400" 
+				ZOOM="100" 
+				XSCALE="100" 
+				YSCALE="100" 
+				URL="http://www.zoomify.com" 
+				URLTARGET="_self" 
+				ROLLOVER="0" 
+				CAPTION="Colorful label%0D(1st POI%27s, 1st label)" 
+				TOOLTIP="This example has label%0Dand caption colors" 
+				TEXTCOLOR="ffffff" 
+				BACKCOLOR="000000"
+				LINECOLOR="ffff00" 
+				FILLCOLOR="ffff33"
+				TEXTVISIBLE="1" 
+				BACKVISIBLE="1"
+				LINEVISIBLE="1" 
+				FILLVISIBLE="1"
+				CAPTIONPOSITION="8" >
+			</LABEL>
+			<LABEL 
+				ID="1" 
+				NAME="First POI%27s second label" 
+				MEDIATYPE="symbol"
+				MEDIA="triangle" 
+				X="1100" 
+				Y="800" 
+				ZOOM="50" 
+				XSCALE="100" 
+				YSCALE="100" 
+				URL="" 
+				URLTARGET="" 
+				ROLLOVER="0" 
+				CAPTION="Zoomed label (1st POI%27s 2nd label)" 
+				TOOLTIP="This example is at 50% image zoom"
+				TEXTCOLOR="000000" 
+				BACKCOLOR="ffffff"
+				LINECOLOR="333333" 
+				FILLCOLOR="ffffff"
+				TEXTVISIBLE="1" 
+				BACKVISIBLE="1"
+				LINEVISIBLE="1" 
+				FILLVISIBLE="1"
+				CAPTIONPOSITION="8" >
+			</LABEL>
+			<LABEL 
+				ID="3" 
+				NAME="Third POI label" 
+				MEDIATYPE="symbol"
+				MEDIA="arrowLeft" 
+				X="1100" 
+				Y="1400" 
+				ZOOM="100" 
+				XSCALE="100" 
+				YSCALE="100" 
+				URL="http://www.adobe.com" 
+				URLTARGET="_blank" 
+				ROLLOVER="1" 
+				CAPTION="Rollover label (3rd POI, 1st label)" 
+				TOOLTIP="This label is revealed when the mouse rolls over it" 
+				TEXTCOLOR="000000" 
+				BACKCOLOR="ffffff"
+				LINECOLOR="333333" 
+				FILLCOLOR="ffffff"
+				TEXTVISIBLE="1" 
+				BACKVISIBLE="1"
+				LINEVISIBLE="1" 
+				FILLVISIBLE="1"
+				CAPTIONPOSITION="6" >
+			</LABEL>
+			<LABEL 
+				ID="4" 
+				NAME="Fourth POI%27s first label" 
+				MEDIATYPE="symbol"
+				MEDIA="arrowUpRight" 
+				X="1100" 
+				Y="1600" 
+				ZOOM="100" 
+				XSCALE="100" 
+				YSCALE="100" 
+				URL="http://www.zoomify.com" 
+				URLTARGET="_blank" 
+				ROLLOVER="0" 
+				CAPTION="This caption is overridden by the HTLM caption below" 
+				TOOLTIP="This tooltip is overridden by the HTML tooltip below" 
+				TEXTCOLOR="000000" 
+				BACKCOLOR="ffffff"
+				LINECOLOR="333333" 
+				FILLCOLOR="ffffff"
+				TEXTVISIBLE="1" 
+				BACKVISIBLE="1"
+				LINEVISIBLE="1" 
+				FILLVISIBLE="1"
+				CAPTIONPOSITION="8" >
+					<CAPTION>Multiline, <font color="#008800"><i>HTML enabled</i></font><font color="#ffffff">.</font><br/>Caption</CAPTION>
+					<TOOLTIP>This is a multiline, HTML enabled tooltip created using the TOOLTIP tag. <br/><font color="#008800"><b>Basic HTML</b></font> is <i>supported</i>.</TOOLTIP>
+			</LABEL>
+			<LABEL 
+				ID="6" 
+				NAME="Fifth POI%27s first label" 
+				MEDIATYPE="symbol"
+				MEDIA="polygon" 
+				X="1100" 
+				Y="2300" 
+				ZOOM="100" 
+				XSCALE="100" 
+				YSCALE="100" 
+				URL="http://www.zoomify.com" 
+				URLTARGET="_blank" 
+				ROLLOVER="0" 
+				CAPTION="Polygon label (5th POI%27s 1st label)" 
+				TOOLTIP="This is a polygonal label" 
+				TEXTCOLOR="000000" 
+				BACKCOLOR="ffffff"
+				LINECOLOR="ff0000" 
+				FILLCOLOR="0000ff"
+				TEXTVISIBLE="1" 
+				BACKVISIBLE="1"
+				LINEVISIBLE="1" 
+				FILLVISIBLE="1"
+				CAPTIONPOSITION="5" >
+					<POLYGON> 					
+						<POINT X="1205" Y="2126.25" ></POINT> 
+						<POINT X="997.5" Y="2083.75" ></POINT> 
+						<POINT X="843.75" Y="2282.5" ></POINT> 
+						<POINT X="975" Y="2487.5" ></POINT> 
+						<POINT X="1231.25" Y="2496.25" ></POINT> 
+						<POINT X="1346.25" Y="2327.5" ></POINT> 
+					</POLYGON>
+			</LABEL>
+			<LABEL 
+				ID="7"
+				NAME="Fifth POI%27s second label" 
+				MEDIATYPE="symbol"
+				MEDIA="polygon" 
+				X="1500" 
+				Y="2300" 
+				ZOOM="100" 
+				XSCALE="100" 
+				YSCALE="100" 
+				URL="http://www.zoomify.com" 
+				URLTARGET="_blank" 
+				ROLLOVER="0" 
+				CAPTION="Polygon label (5th POI%27s 2nd label)" 
+				TOOLTIP="This is another polygonal label" 
+				TEXTCOLOR="000000" 
+				BACKCOLOR="ffffff"
+				LINECOLOR="0000ff" 
+				FILLCOLOR="ff0000"
+				TEXTVISIBLE="1" 
+				BACKVISIBLE="1"
+				LINEVISIBLE="1" 
+				FILLVISIBLE="1"
+				CAPTIONPOSITION="8" >
+					<POLYGON> 					
+						<POINT X="1605" Y="2026.25" ></POINT> 
+						<POINT X="1397.5" Y="2083.75" ></POINT> 
+						<POINT X="1243.75" Y="2382.5" ></POINT> 
+						<POINT X="1375" Y="2487.5" ></POINT> 
+						<POINT X="1631.25" Y="2496.25" ></POINT> 
+						<POINT X="1746.25" Y="2227.5" ></POINT> 
+					</POLYGON>
+			</LABEL>
+		</LABELS>
+	</POI>
+</ZAS>

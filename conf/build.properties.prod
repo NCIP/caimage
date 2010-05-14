@@ -1,0 +1,3 @@
+db_schema=jdbc:oracle:thin:@lpgprod.nci.nih.gov:1521:LPGPROD
+db_username=caimageop
+db_password=lpg1234

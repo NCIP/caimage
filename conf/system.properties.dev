@@ -1,0 +1,18 @@
+liz_httpserver=http://lpgdev101.nci.nih.gov/lizardtech
+liz_httpstyle=http://lpgdev101.nci.nih.gov:9001/StyleServer
+liz_server=lpgdev101.nci.nih.gov
+image_path=/usr/local/newLizardTech/External/Donator/Tissue/Diagnosis
+image_user=lizard
+image_passwd=ncicbliz
+djatoka_server=http://imageserver-dev.nci.nih.gov/adore-djatoka
+djatoka_image_base=http://imageserver-dev.nci.nih.gov/adore-djatoka
+djatoka_image_path=images/caimage
+zoomify_dir=http://imageserver-dev.nci.nih.gov/zoomify/
+zoomify_host=imageserver-dev.nci.nih.gov
+# Properties for the convertor
+conv_folder=/encode/enc6
+conv_error=/encode/enc6/Error
+#cacore_server=http://cbioqa101.nci.nih.gov:49080/cacore31/http/remoteService
+#cacore_server=http://cbioapp101.nci.nih.gov:49080/cacore31/http/remoteService
+cacore_server=http://lexevsapi51.nci.nih.gov/lexevsapi51
+
