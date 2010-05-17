@@ -2,7 +2,7 @@
 Instructions for updating image file names in the caIMAGE database for images converted from the SID format.
 
 1) Check out the files from the utilities directory in the caimage SVN repository:
-   https://ncisvn.nci.nih.gov/svn/caimage/trunk/utilites
+   https://ncisvn.nci.nih.gov/svn/caimage/trunk/utilities
 2) Edit the properties file caimage_update.properties to ensure the database user, password, and URL properties are correct
    for the tier on which the images will be submitted:
    db.usr, db.pwd, db.url
