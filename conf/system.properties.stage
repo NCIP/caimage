@@ -23,5 +23,5 @@ zoomify_host=imageserver-stage.nci.nih.gov
 conv_folder=/encode/enc6
 conv_error=/encode/enc6/Error
 #cacore_server=http://cbioqa101.nci.nih.gov:49080/cacore31/http/remoteService
-cacore_server=http://cbioapp101.nci.nih.gov:49080/cacore31/http/remoteService
-
+#cacore_server=http://cbioapp101.nci.nih.gov:49080/cacore31/http/remoteService
+cacore_server=http://lexevsapi51.nci.nih.gov/lexevsapi51
