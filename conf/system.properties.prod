@@ -22,5 +22,5 @@ zoomify_host=imageserver.nci.nih.gov
 # Properties for the convertor
 conv_folder=/encode/enc-prod
 conv_error=/encode/enc-prod/Error
-cacore_server=http://cabio.nci.nih.gov/cacore31/http/remoteService
-
+#cacore_server=http://cabio.nci.nih.gov/cacore31/http/remoteService
+cacore_server=http://lexevsapi51.nci.nih.gov/lexevsapi51
