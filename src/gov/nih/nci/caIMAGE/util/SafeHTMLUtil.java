@@ -55,8 +55,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang.StringUtils;
 import org.htmlparser.util.Translate; 
+import java.net.*;
 
 public class SafeHTMLUtil {
+    public static final String unallowableCharacters = ";!\"\'@#\\$%^&*()+=/{}[]~|?`";
 	
     public static String clean(String s)    {
     	String clean = Translate.decode(s).replace("<", "").replace(">", "");
@@ -379,4 +381,33 @@ public class SafeHTMLUtil {
         }
         return true;
     }     
+
+    public static boolean contains(String unallowableCharacters, String stringToTest) 
+    {
+	Boolean rv = false;
+	
+	if(unallowableCharacters!=null && stringToTest!=null) {
+	    char[] filterString = unallowableCharacters.toCharArray();
+	    filterString = stringToTest.toCharArray();
+	    for(int i = 0; i<filterString.length;i++) {
+		if(unallowableCharacters.indexOf(filterString[i])!=-1){
+		    rv = true;
+		}
+	    }
+	}
+	return rv;		
+    }
+
+    public static boolean containsUnallowableCharacters(String stringToTest, Boolean decode) {
+	Boolean rv = false;
+	try {
+	    if (decode)
+		stringToTest = URLDecoder.decode(stringToTest, "UTF-8");
+	    rv = contains(unallowableCharacters, stringToTest);
+	    if (decode)
+		stringToTest = URLEncoder.encode(stringToTest, "UTF-8");
+	} catch (Exception e) {
+	};
+	return rv;
+    }
 }
