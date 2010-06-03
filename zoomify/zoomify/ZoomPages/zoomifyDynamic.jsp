@@ -1,4 +1,6 @@
 <%@ page language="java"%>
+<%@ page import="gov.nih.nci.caIMAGE.util.*"%>
+<%@ page import="java.io.*"%>
 <html>
 <head>
 	<title>Zoomify Annotation System</title>
@@ -15,11 +17,23 @@
 
 			<%
 				String img = request.getParameter("img");
+				if (img != null && !img.equals(""))
+                                   if (SafeHTMLUtil.containsUnallowableCharacters(img, true))
+                                        throw new IOException("invalid img:" + img);
+
 				String noExt = img.substring(0,img.lastIndexOf("."));
 				
 			    String host = request.getParameter("host");
+			    if (host != null && !host.equals(""))
+                                   if (SafeHTMLUtil.containsUnallowableCharacters(host, true))
+                                        throw new IOException("invalid host:" + host);
 			    host = "http://" + host + "/zoomify/";
+
 			    String catalog = request.getParameter("catalog");
+			    if (catalog != null && !catalog.equals(""))
+                                   if (SafeHTMLUtil.containsUnallowableCharacters(catalog, true))
+                                        throw new IOException("invalid catalog:" + catalog);
+
 			    String imgPath = "/ZoomImages/zoomify/" + catalog + "/" + img;
 			    String xmlPath = "/ZoomImages/zoomify/" + catalog + "/xmldata/" + noExt + ".xml";
 			%>
