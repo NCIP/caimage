@@ -20,3 +20,4 @@ To install Zoomify and deploy to Tomcat for integration with caIMAGE:
    $TOMCAT_HOME/conf/context.xml
    by adding the following attribute to the <Context> element:
    allowLinking="true"
+5) copy the files in SVN zoomify/WEB-INF/lib to $TOmCAT_HOME/webapps/zoomify/WEB-INF/lib
