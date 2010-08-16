@@ -89,8 +89,8 @@ conceptCode = document.main.diagnosisCode.name;
 
 <link rel="stylesheet" href="caIMAGE.css" type="text/css">
 <%@ include file="html/search_images.htm"%>
-<%simpleandfile sf = new simpleandfile();
-			sf.log("start");
+<%//simpleandfile sf = new simpleandfile();
+	//		sf.log("start");
 			Logger logger = Logger.getLogger(simpleandfile.class);
 
 			%>
