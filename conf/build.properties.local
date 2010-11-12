@@ -1,3 +1,0 @@
-db_schema=jdbc:oracle:thin:@localhost:1521:XE
-db_username=system
-db_password=caimage4nci

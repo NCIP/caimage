@@ -1,8 +1,0 @@
-driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@cbdb-d1001.nci.nih.gov:1521/NCID1DEV
-username=caimage
-password=image#234
-minconns=5
-maxconns=100
-maxconntime=1
-maxcheckoutsecs=60000

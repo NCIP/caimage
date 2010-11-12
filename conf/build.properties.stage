@@ -1,3 +1,0 @@
-db_schema=jdbc:oracle:thin:@cbiodb20.nci.nih.gov:1521:CBSTG
-db_username=caimagestage
-db_password=prot1234
