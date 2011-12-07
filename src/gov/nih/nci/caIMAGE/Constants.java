@@ -846,7 +846,7 @@ public class Constants {
  
     public static final String SEARCH_FORM = "searchform";
  
-    // used for search results in adminEditModels
+    /// used for search results in adminEditModels
     public static final String CURATION_ASSIGNMENT_FORM = "curationassignmentform";    
  
     public static final String EXECUTE_TIME = "execute_time";
