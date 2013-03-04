@@ -1,3 +1,10 @@
+/*L
+ * Copyright SAIC (Corporate).
+ *
+ * Distributed under the OSI-approved BSD 3-Clause License.
+ * See https://github.com/NCIP/caimage/LICENSE.txt for details.
+ */
+
 package caimage.update.util;
 import java.io.File;
 import java.io.IOException;

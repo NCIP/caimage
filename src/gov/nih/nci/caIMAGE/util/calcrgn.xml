@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--L
+  Copyright SAIC (Corporate).
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See https://github.com/NCIP/caimage/LICENSE.txt for details.
+L-->
+
 <!DOCTYPE ImageServer SYSTEM "calcrgn.dtd">
 <ImageServer host="165.112.113.105:80" path="lizardtech/iserv" xmlns:LizardTech="http://www.lizardtech.com">
 	<Request command="calcrgn">
