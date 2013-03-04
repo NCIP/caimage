@@ -1,3 +1,10 @@
+/*L
+ * Copyright SAIC (Corporate).
+ *
+ * Distributed under the OSI-approved BSD 3-Clause License.
+ * See https://github.com/NCIP/caimage/LICENSE.txt for details.
+ */
+
 /**
  * 
  * $Id: Constants.java,v 1.122 2009-06-17 16:06:44 pandyas Exp $

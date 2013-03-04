@@ -1,3 +1,10 @@
+<%--L
+  Copyright SAIC (Corporate).
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See https://github.com/NCIP/caimage/LICENSE.txt for details.
+L--%>
+
 <ZAS>
 <POI x="0" y="0" zoom="2.00648764338026" user="Anonymous" date="20031207134041" id="0" name="Coronal overview" />
 <POI x="0.0993417322527121" y="-0.224715320064839" zoom="12.5" user="Anonymous" date="20031207134110" id="1" name="Seminal Vesicle" />

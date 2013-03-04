@@ -1,3 +1,9 @@
+<%--L
+  Copyright SAIC (Corporate).
+
+  Distributed under the OSI-approved BSD 3-Clause License.
+  See https://github.com/NCIP/caimage/LICENSE.txt for details.
+L--%>
 
 <%@ page language="java" import="java.util.*,gov.nih.nci.caIMAGE.util.*,gov.nih.nci.caIMAGE.*,gov.nih.nci.caimage.db.*"%>
 <%@ page info="this page is the login page, first name & last name and verified on tbis page "%>

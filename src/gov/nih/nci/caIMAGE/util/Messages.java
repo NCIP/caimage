@@ -1,3 +1,10 @@
+/*L
+ * Copyright SAIC (Corporate).
+ *
+ * Distributed under the OSI-approved BSD 3-Clause License.
+ * See https://github.com/NCIP/caimage/LICENSE.txt for details.
+ */
+
 /*
  * Created on May 29, 2003
  *

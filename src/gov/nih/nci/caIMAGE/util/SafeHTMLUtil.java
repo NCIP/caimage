@@ -1,3 +1,10 @@
+/*L
+ * Copyright SAIC (Corporate).
+ *
+ * Distributed under the OSI-approved BSD 3-Clause License.
+ * See https://github.com/NCIP/caimage/LICENSE.txt for details.
+ */
+
 /**
  * 
  * $Id: SafeHTMLUtil.java,v 1.10 2008-08-27 13:58:21 pandyas Exp $
