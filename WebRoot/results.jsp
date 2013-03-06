@@ -2,7 +2,7 @@
   Copyright SAIC (Corporate).
 
   Distributed under the OSI-approved BSD 3-Clause License.
-  See https://github.com/NCIP/caimage/LICENSE.txt for details.
+  See http://ncip.github.com/caimage/LICENSE.txt for details.
 L--%>
 
 <td width="89%" valign="top" bgcolor="#F7F7CD" class="bodytext">
