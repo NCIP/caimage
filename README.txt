@@ -1,8 +1,8 @@
 Welcome to the caImage Project!
 
-caImage supports the storage and display of pathology images as well as the capture of and search for annotations associated with those images.
+caImage supports the storage and display of pathology images as well as the capture of and search for annotations associated with those images. caImage is developed in Java and requires Apache Ant for building.
 
-caImage is developed in Java and requires Apache Ant for building.
+caImage is currently being used by caMod (https://cancermodels.nci.nih.gov/camod) and eMice (http://emice.nci.nih.gov).
 
 caImage is distributed under the BSD 3-Clause License. Please see the NOTICE and LICENSE files for details.
 
