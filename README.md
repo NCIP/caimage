@@ -6,5 +6,6 @@ caImage is distributed under the BSD 3-Clause License. Please see the NOTICE and
 
 You will find more details about caImage in the following links:
 
-Code Repository: https://github.com/NCIP/caimage
-Issue Tracker: https://tracker.nci.nih.gov/browse/CAIMAGE
+* Code Repository: https://github.com/NCIP/caimage
+* Issue Tracker: https://tracker.nci.nih.gov/browse/CAIMAGE
+* Documentation: http://cancerimages.nci.nih.gov/caIMAGE/help_menu.html
