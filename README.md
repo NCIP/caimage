@@ -8,4 +8,3 @@ You will find more details about caImage in the following links:
 
 * Code Repository: https://github.com/NCIP/caimage
 * Issue Tracker: https://tracker.nci.nih.gov/browse/CAIMAGE
-* Documentation: http://cancerimages.nci.nih.gov/caIMAGE/help_menu.html
