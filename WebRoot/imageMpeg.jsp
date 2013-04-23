@@ -1,5 +1,5 @@
 <%--L
-  Copyright SAIC (Corporate).
+  Copyright SAIC
 
   Distributed under the OSI-approved BSD 3-Clause License.
   See http://ncip.github.com/caimage/LICENSE.txt for details.
